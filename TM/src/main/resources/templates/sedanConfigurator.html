@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Sedan Configurator</title>
+</head>
+<body>
+
+<div>
+    <h1> Sedan Configurator here ---->>>
+    </h1>
+</div>
+
+<form th:action="@{/configurator/sedan}" th:object="${carConfiguratorForm}" method="post">
+
+    <div th:each="exterior : ${availableExteriorOptions}">
+        <label>
+            <input type="radio" th:field="*{exteriorColor}" th:value="${exterior.name()}" onclick="enableSubmit()">
+            <span th:text="${exterior}"></span>
+        </label>
+    </div>
+
+    <div th:each="interior : ${availableInteriorOptions}">
+        <label>
+            <input type="radio" th:field="*{interiorColor}" th:value="${interior.name()}" onclick="enableSubmit()">
+            <span th:text="${interior}"></span>
+        </label>
+    </div>
+
+    <div th:each="engine : ${availableEngineTypes}">
+        <label>
+            <input type="radio" th:field="*{engineType}" th:value="${engine.name()}" onclick="enableSubmit()">
+            <span th:text="${engine.description}"></span>
+        </label>
+    </div>
+
+
+    <button id="submitButton" type="submit">Submit</button>
+</form>
+
+</body>
+</html>

@@ -6,7 +6,8 @@ import TM.model.Enums.InteriorColor;
 import lombok.Data;
 
 @Data
-public abstract class Car {
+public class CarConfiguratorForm {
+
     private ExteriorColor exteriorColor;
     private InteriorColor interiorColor;
     private EngineType engineType;
