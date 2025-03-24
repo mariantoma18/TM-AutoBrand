@@ -9,4 +9,6 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 public class Suv extends Car{
 
+    private int startingPrice;
+    private int finalPrice;
 }
