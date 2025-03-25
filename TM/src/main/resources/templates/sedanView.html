@@ -17,5 +17,10 @@
 <p>Engine: <span th:text="${configuredSedanDto.engineType.description}"></span></p>
 <p>Final price: <span th:text="${configuredSedanDto.finalPrice} + ' ' + Euro"></span></p>
 
+<form th:action="@{/configurator/sedanOfferRequest}" method="get">
+    <input type="hidden" name="id" th:value="${configuredSedanDto.id}" />
+    <button type="submit">Request Offer</button>
+</form>
+
 </body>
 </html>

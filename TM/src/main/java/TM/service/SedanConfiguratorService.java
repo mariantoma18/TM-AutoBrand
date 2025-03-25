@@ -20,7 +20,9 @@ public class SedanConfiguratorService {
     selectedSedanDto.setFinalPrice(calculateTotalPrice(configuratorForm, selectedSedanDto));
     sedan.setFinalPrice(selectedSedanDto.getFinalPrice());
 
-    sedanRepository.save(sedan);
+    Sedan savedSedan = sedanRepository.save(sedan);
+
+    selectedSedanDto.setId(savedSedan.getId());
 
     return selectedSedanDto;
   }
@@ -47,9 +49,15 @@ public class SedanConfiguratorService {
 
   public int calculateTotalPrice(CarConfiguratorForm configuratorForm, SedanDto selectedSedanDto) {
     return selectedSedanDto.getStartingPrice()
-            + calculateOptionsPrice(
+        + calculateOptionsPrice(
             configuratorForm.getExteriorColor().getOptionPrice(),
             configuratorForm.getInteriorColor().getOptionPrice(),
             configuratorForm.getEngineType().getOptionPrice());
+  }
+
+  public Sedan getSedanById(int id) {
+      return sedanRepository
+          .findById(id)
+          .orElseThrow(() -> new RuntimeException("Sedan with id " + id + " does not exist"));
   }
 }

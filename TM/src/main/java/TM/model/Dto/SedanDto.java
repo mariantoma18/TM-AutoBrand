@@ -10,4 +10,5 @@ public class SedanDto extends Car {
 
     private final int startingPrice = 25000;
     private int finalPrice;
+    private int id;
 }

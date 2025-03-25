@@ -5,10 +5,12 @@ import TM.model.Enums.ExteriorColor;
 import TM.model.Enums.InteriorColor;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "sedans")
+@NoArgsConstructor
 public class Sedan {
 
     @Id
