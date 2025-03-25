@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+  <title>Suv View</title>
+</head>
+<body>
+
+<div>
+  <h1>
+    Your SUV here ---->>
+  </h1>
+</div>
+
+<p>Exterior: <span th:text="${configuredSuv.exteriorColor}"></span></p>
+<p>Interior: <span th:text="${configuredSuv.interiorColor}"></span></p>
+<p>Engine: <span th:text="${configuredSuv.engineType.description}"></span></p>
+<p>Final price: <span th:text="${configuredSuv.finalPrice} + ' ' + Euro"></span></p>
+
+</body>
+</html>

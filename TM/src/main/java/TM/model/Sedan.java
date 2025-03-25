@@ -9,6 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 public class Sedan extends Car{
 
-    private int startingPrice;
+    private final int startingPrice = 25000;
     private int finalPrice;
 }
