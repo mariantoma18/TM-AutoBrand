@@ -1,29 +1,55 @@
 package TM.service;
 
 import TM.model.CarConfiguratorForm;
+import TM.model.Dto.SuvDto;
 import TM.model.Suv;
+import TM.repository.SuvRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class SuvConfiguratorService {
 
-    public Suv createSuv(CarConfiguratorForm configuratorForm) {
-        Suv selectedSuv = new Suv();
-        selectedSuv.setExteriorColor(configuratorForm.getExteriorColor());
-        selectedSuv.setInteriorColor(configuratorForm.getInteriorColor());
-        selectedSuv.setEngineType(configuratorForm.getEngineType());
+  private final SuvRepository suvRepository;
 
-        selectedSuv.setFinalPrice(
-                calculateTotalPrice(
-                        configuratorForm.getExteriorColor().getOptionPrice(),
-                        configuratorForm.getInteriorColor().getOptionPrice(),
-                        configuratorForm.getEngineType().getOptionPrice()));
+  public SuvDto createSuv(CarConfiguratorForm configuratorForm) {
+    SuvDto selectedSuvDto = mapToSuvDto(configuratorForm);
+    Suv suv = mapToSuv(configuratorForm);
 
-        return selectedSuv;
-    }
+    selectedSuvDto.setFinalPrice(calculateTotalPrice(configuratorForm, selectedSuvDto));
+    suv.setFinalPrice(selectedSuvDto.getFinalPrice());
 
-    public int calculateTotalPrice(
-            int exteriorOptionPrice, int interiorOptionPrice, int engineOptionPrice) {
-        return exteriorOptionPrice + interiorOptionPrice + engineOptionPrice;
-    }
+    suvRepository.save(suv);
+
+    return selectedSuvDto;
+  }
+
+  public Suv mapToSuv(CarConfiguratorForm configuratorForm) {
+    return new Suv(
+        configuratorForm.getExteriorColor(),
+        configuratorForm.getInteriorColor(),
+        configuratorForm.getEngineType());
+  }
+
+  public SuvDto mapToSuvDto(CarConfiguratorForm configuratorForm) {
+    SuvDto selectedSuvDto = new SuvDto();
+    selectedSuvDto.setExteriorColor(configuratorForm.getExteriorColor());
+    selectedSuvDto.setInteriorColor(configuratorForm.getInteriorColor());
+    selectedSuvDto.setEngineType(configuratorForm.getEngineType());
+    return selectedSuvDto;
+  }
+
+  public int calculateOptionsPrice(
+      int exteriorOptionPrice, int interiorOptionPrice, int engineOptionPrice) {
+    return exteriorOptionPrice + interiorOptionPrice + engineOptionPrice;
+  }
+
+  public int calculateTotalPrice(CarConfiguratorForm configuratorForm, SuvDto selectedSuvDto) {
+    return selectedSuvDto.getStartingPrice()
+            + calculateOptionsPrice(
+            configuratorForm.getExteriorColor().getOptionPrice(),
+            configuratorForm.getInteriorColor().getOptionPrice(),
+            configuratorForm.getEngineType().getOptionPrice());
+  }
 }

@@ -11,4 +11,6 @@ public class CarConfiguratorForm {
     private ExteriorColor exteriorColor;
     private InteriorColor interiorColor;
     private EngineType engineType;
+
+    private int finalPrice;
 }

@@ -1,8 +1,8 @@
 package TM.controller;
 
 import TM.model.CarConfiguratorForm;
-import TM.model.Sedan;
-import TM.model.Suv;
+import TM.model.Dto.SedanDto;
+import TM.model.Dto.SuvDto;
 import TM.service.ConfiguratorService;
 import TM.service.SedanConfiguratorService;
 import TM.service.SuvConfiguratorService;
@@ -36,8 +36,8 @@ public class ConfiguratorController {
 
     @PostMapping("/sedan")
     public String receiveSedanConfiguration(@ModelAttribute CarConfiguratorForm configuratorForm, Model model){
-        Sedan configuredSedan = sedanConfiguratorService.createSedan(configuratorForm);
-        model.addAttribute("configuredSedan", configuredSedan);
+        SedanDto configuredSedanDto = sedanConfiguratorService.createSedan(configuratorForm);
+        model.addAttribute("configuredSedanDto", configuredSedanDto);
         return "sedanView";
     }
 
@@ -52,8 +52,8 @@ public class ConfiguratorController {
 
     @PostMapping("/suv")
     public String receiveSuvConfiguration(@ModelAttribute CarConfiguratorForm configuratorForm, Model model){
-        Suv configuredSuv = suvConfiguratorService.createSuv(configuratorForm);
-        model.addAttribute("configuredSuv", configuredSuv);
+        SuvDto configuredSuvDto = suvConfiguratorService.createSuv(configuratorForm);
+        model.addAttribute("configuredSuvDto", configuredSuvDto);
         return "suvView";
     }
 

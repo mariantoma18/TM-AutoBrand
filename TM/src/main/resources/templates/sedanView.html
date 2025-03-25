@@ -12,10 +12,10 @@
     </h1>
 </div>
 
-<p>Exterior: <span th:text="${configuredSedan.exteriorColor}"></span></p>
-<p>Interior: <span th:text="${configuredSedan.interiorColor}"></span></p>
-<p>Engine: <span th:text="${configuredSedan.engineType.description}"></span></p>
-<p>Final price: <span th:text="${configuredSedan.finalPrice} + ' ' + Euro"></span></p>
+<p>Exterior: <span th:text="${configuredSedanDto.exteriorColor}"></span></p>
+<p>Interior: <span th:text="${configuredSedanDto.interiorColor}"></span></p>
+<p>Engine: <span th:text="${configuredSedanDto.engineType.description}"></span></p>
+<p>Final price: <span th:text="${configuredSedanDto.finalPrice} + ' ' + Euro"></span></p>
 
 </body>
 </html>
