@@ -15,21 +15,21 @@
 
     <div th:each="exterior : ${availableExteriorOptions}">
         <label>
-            <input type="radio" th:field="*{exteriorColor}" th:value="${exterior.name()}" onclick="enableSubmit()">
+            <input type="radio" th:field="*{exteriorColor}" th:value="${exterior.name()}" onclick="enableSubmit()" required>
             <span th:text="${exterior.description} + ' (' + ${exterior.optionPrice} + ' ' + Euro + ')'"></span>
         </label>
     </div>
 
     <div th:each="interior : ${availableInteriorOptions}">
         <label>
-            <input type="radio" th:field="*{interiorColor}" th:value="${interior.name()}" onclick="enableSubmit()">
+            <input type="radio" th:field="*{interiorColor}" th:value="${interior.name()}" onclick="enableSubmit()" required>
             <span th:text="${interior.description} + ' (' + ${interior.optionPrice} + ' ' + Euro + ')'"></span>
         </label>
     </div>
 
     <div th:each="engine : ${availableEngineTypes}">
         <label>
-            <input type="radio" th:field="*{engineType}" th:value="${engine.name()}" onclick="enableSubmit()">
+            <input type="radio" th:field="*{engineType}" th:value="${engine.name()}" onclick="enableSubmit()" required>
             <span th:text="${engine.description} + ' (' + ${engine.optionPrice} + ' ' + Euro + ')'"></span>
         </label>
     </div>

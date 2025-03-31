@@ -1,7 +1,9 @@
 package TM.service;
 
 import TM.model.CarConfiguratorForm;
+import TM.model.Dto.SedanDto;
 import TM.model.Dto.SuvDto;
+import TM.model.Sedan;
 import TM.model.Suv;
 import TM.repository.SuvRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,10 @@ public class SuvConfiguratorService {
 
     selectedSuvDto.setFinalPrice(calculateTotalPrice(configuratorForm, selectedSuvDto));
     suv.setFinalPrice(selectedSuvDto.getFinalPrice());
+
+    Suv savedSuv = suvRepository.save(suv);
+
+    selectedSuvDto.setId(savedSuv.getId());
 
     suvRepository.save(suv);
 
@@ -51,5 +57,11 @@ public class SuvConfiguratorService {
             configuratorForm.getExteriorColor().getOptionPrice(),
             configuratorForm.getInteriorColor().getOptionPrice(),
             configuratorForm.getEngineType().getOptionPrice());
+  }
+
+  public Suv getSuvById(int id) {
+    return suvRepository
+            .findById(id)
+            .orElseThrow(() -> new RuntimeException("SUV with id " + id + " does not exist"));
   }
 }

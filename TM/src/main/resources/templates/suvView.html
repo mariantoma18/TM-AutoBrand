@@ -17,5 +17,11 @@
 <p>Engine: <span th:text="${configuredSuvDto.engineType.description}"></span></p>
 <p>Final price: <span th:text="${configuredSuvDto.finalPrice} + ' ' + Euro"></span></p>
 
+<form th:action="@{/configurator/suvOfferRequest}" method="get">
+    <input type="hidden" name="id" th:value="${configuredSuvDto.id}" />
+    <button type="submit">Request Offer</button>
+</form>
+
+
 </body>
 </html>

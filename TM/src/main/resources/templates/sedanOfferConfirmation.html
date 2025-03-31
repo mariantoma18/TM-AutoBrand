@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Offer Confirmation</title>
+</head>
+<body>
+
+<h1> Thank you for the offer request!<br />
+    Your offer request has been successfully sent.<br />
+    You'll be contacted soon by one of you dealers.<br />
+    Here is a quick preview of your configuration.
+</h1>
+
+<p>Model:
+<span th:text="${offerRequest.sedan.exteriorColor.description} + ', ' + ${offerRequest.sedan.interiorColor.description} + ', ' +${offerRequest.sedan.engineType.description}"></span>
+</p>
+
+<p>Client Details:
+<span th:text="${offerRequest.firstName} + ' ' + ${offerRequest.lastName}"></span>
+</p>
+
+<p>Email:
+<span th:text="${offerRequest.email}"></span>
+</p>
+
+<p>Phone Number:
+<span th:text="${offerRequest.phoneNumber}"></span>
+</p>
+
+<p>Offer request created at:
+<span th:text="${#temporals.format(offerRequest.dateTime, 'dd/MM/yyyy HH:mm')}"></span>
+</p>
+
+</body>
+</html>

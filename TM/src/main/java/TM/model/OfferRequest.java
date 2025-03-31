@@ -23,11 +23,22 @@ public class OfferRequest {
     @ManyToOne
     private Sedan sedan;
 
+    @ManyToOne
+    private Suv suv;
+
     public OfferRequest(String firstName, String lastName, String email, String phoneNumber, Sedan sedan) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.sedan = sedan;
+    }
+
+    public OfferRequest(String firstName, String lastName, String email, String phoneNumber, Suv suv) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.suv = suv;
     }
 }

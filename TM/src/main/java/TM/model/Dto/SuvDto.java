@@ -13,4 +13,5 @@ public class SuvDto extends Car {
 
     private final int startingPrice = 28000;
     private int finalPrice;
+    private int id;
 }

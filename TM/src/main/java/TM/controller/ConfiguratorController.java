@@ -1,11 +1,8 @@
 package TM.controller;
 
-import TM.model.CarConfiguratorForm;
+import TM.model.*;
 import TM.model.Dto.SedanDto;
 import TM.model.Dto.SuvDto;
-import TM.model.OfferRequest;
-import TM.model.OfferRequestForm;
-import TM.model.Sedan;
 import TM.service.ConfiguratorService;
 import TM.service.OfferRequestService;
 import TM.service.SedanConfiguratorService;
@@ -56,9 +53,9 @@ public class ConfiguratorController {
     @PostMapping("/sedanOfferRequest")
     public String sendSedanOfferRequest(@RequestParam int id, @ModelAttribute OfferRequestForm offerRequestForm, Model model){
         Sedan sedan = sedanConfiguratorService.getSedanById(id);
-        OfferRequest offer = offerRequestService.mapToOfferRequest(offerRequestForm, sedan);
+        OfferRequest offer = offerRequestService.mapSedanToOfferRequest(offerRequestForm, sedan);
         model.addAttribute("offerRequest" , offer);
-        return "offerConfirmation";
+        return "sedanOfferConfirmation";
     }
 
     @GetMapping("/suv")
@@ -75,6 +72,21 @@ public class ConfiguratorController {
         SuvDto configuredSuvDto = suvConfiguratorService.createSuv(configuratorForm);
         model.addAttribute("configuredSuvDto", configuredSuvDto);
         return "suvView";
+    }
+
+    @GetMapping("/suvOfferRequest")
+    public String getSuvOfferRequestPage(Model model, @RequestParam(required = true) Integer id){
+        model.addAttribute("offerRequestForm", new OfferRequestForm());
+        model.addAttribute("id", id);
+        return "suvOfferRequestForm";
+    }
+
+    @PostMapping("/suvOfferRequest")
+    public String sendSuvOfferRequest(@RequestParam int id, @ModelAttribute OfferRequestForm offerRequestForm, Model model){
+        Suv suv = suvConfiguratorService.getSuvById(id);
+        OfferRequest offer = offerRequestService.mapSuvToOfferRequest(offerRequestForm, suv);
+        model.addAttribute("offerRequest" , offer);
+        return "suvOfferConfirmation";
     }
 
 }
