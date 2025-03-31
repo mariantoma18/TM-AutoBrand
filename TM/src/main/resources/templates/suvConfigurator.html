@@ -3,40 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Suv Configurator</title>
+    <link rel="stylesheet">
+
+    <style>
+        div.myDiv {
+	        width: 50%;
+			margin: auto;
+			border: 2px solid black;
+			text-align: center;
+        }
+
+        body {
+	        text-align: center;
+			box-align: center;
+		}
+    </style>
 </head>
 <body>
 
-<div>
+<div class="myDiv">
     <h1> Suv Configurator here ---->>>
     </h1>
 </div>
 
 <form th:action="@{/configurator/suv}" th:object="${carConfiguratorForm}" method="post">
 
-    <div th:each="exterior : ${availableExteriorOptions}">
-        <label>
-            <input type="radio" th:field="*{exteriorColor}" th:value="${exterior.name()}" onclick="enableSubmit()" required>
-            <span th:text="${exterior.description} + ' (' + ${exterior.optionPrice} + ' ' + Euro + ')'"></span>
-        </label>
+    <div class="myDiv">
+        <div th:each="exterior : ${availableExteriorOptions}">
+            <label>
+                <input type="radio" th:field="*{exteriorColor}" th:value="${exterior.name()}" onclick="enableSubmit()"
+                       required>
+                <span th:text="${exterior.description} + ' (' + ${exterior.optionPrice} + ' ' + Euro + ')'"></span>
+            </label>
+        </div>
+
+        <div th:each="interior : ${availableInteriorOptions}">
+            <label>
+                <input type="radio" th:field="*{interiorColor}" th:value="${interior.name()}" onclick="enableSubmit()"
+                       required>
+                <span th:text="${interior.description} + ' (' + ${interior.optionPrice} + ' ' + Euro + ')'"></span>
+            </label>
+        </div>
+
+        <div th:each="engine : ${availableEngineTypes}">
+            <label>
+                <input type="radio" th:field="*{engineType}" th:value="${engine.name()}" onclick="enableSubmit()"
+                       required>
+                <span th:text="${engine.description} + ' (' + ${engine.optionPrice} + ' ' + Euro + ')'"></span>
+            </label>
+        </div>
+
+        <input type="hidden" th:field="*{finalPrice}" th:value="${calculatedFinalPrice}"/>
+
+        <button id="submitButton" type="submit">Submit</button>
     </div>
-
-    <div th:each="interior : ${availableInteriorOptions}">
-        <label>
-            <input type="radio" th:field="*{interiorColor}" th:value="${interior.name()}" onclick="enableSubmit()" required>
-            <span th:text="${interior.description} + ' (' + ${interior.optionPrice} + ' ' + Euro + ')'"></span>
-        </label>
-    </div>
-
-    <div th:each="engine : ${availableEngineTypes}">
-        <label>
-            <input type="radio" th:field="*{engineType}" th:value="${engine.name()}" onclick="enableSubmit()" required>
-            <span th:text="${engine.description} + ' (' + ${engine.optionPrice} + ' ' + Euro + ')'"></span>
-        </label>
-    </div>
-
-    <input type="hidden" th:field="*{finalPrice}" th:value="${calculatedFinalPrice}" />
-
-    <button id="submitButton" type="submit">Submit</button>
 </form>
 
 </body>

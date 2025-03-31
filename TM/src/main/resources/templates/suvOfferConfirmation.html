@@ -3,34 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>SUV Offer Confirmation</title>
+    <link rel="stylesheet">
+
+    <style>
+        div.myDiv {
+	        width: 50%;
+			margin: auto;
+			border: 2px solid black;
+			text-align: center;
+        }
+
+        body {
+	        text-align: center;
+			box-align: center;
+		}
+    </style>
 </head>
 <body>
 
-<h1> Thank you for the offer request! <br />
-    Your offer request has been successfully sent.<br />
-    You'll be contacted soon by one of you dealers.<br />
-    Here is a quick preview of your configuration.
-</h1>
+<div class="myDiv">
+    <h1> Thank you for the offer request! <br/>
+        Your offer request has been successfully sent.<br/>
+        You'll be contacted soon by one of you dealers.<br/>
+        Here is a quick preview of your configuration.
+    </h1>
+</div>
 
-<p>Model:<
-<span th:text="${offerRequest.suv.exteriorColor.description} + ', ' + ${offerRequest.suv.interiorColor.description} + ', ' +${offerRequest.suv.engineType.description}"></span>
-</p>
+<div class="myDiv">
+    <p>Model:<
+        <span th:text="${offerRequest.suv.exteriorColor.description} + ', ' + ${offerRequest.suv.interiorColor.description} + ', ' +${offerRequest.suv.engineType.description}"></span>
+    </p>
 
-<p>Client Details:
-<span th:text="${offerRequest.firstName} + ' ' + ${offerRequest.lastName}"></span>
-</p>
+    <p>Client Details:
+        <span th:text="${offerRequest.firstName} + ' ' + ${offerRequest.lastName}"></span>
+    </p>
 
-<p>Email:
-<span th:text="${offerRequest.email}"></span>
-</p>
+    <p>Email:
+        <span th:text="${offerRequest.email}"></span>
+    </p>
 
-<p>Phone Number:
-<span th:text="${offerRequest.phoneNumber}"></span>
-</p>
+    <p>Phone Number:
+        <span th:text="${offerRequest.phoneNumber}"></span>
+    </p>
 
-<p>Offer request created at:
-<span th:text="${#temporals.format(offerRequest.dateTime, 'dd/MM/yyyy HH:mm')}"></span>
-</p>
+    <p>Offer request created at:
+        <span th:text="${#temporals.format(offerRequest.dateTime, 'dd/MM/yyyy HH:mm')}"></span>
+    </p>
+</div>
 
 </body>
 </html>

@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Configurator</title>
+    <link rel="stylesheet">
+
+    <style>
+        div.myDiv {
+	        width: 50%;
+			margin: auto;
+			border: 2px solid black;
+			text-align: center;
+        }
+
+        body {
+	        text-align: center;
+			box-align: center;
+		}
+    </style>
 </head>
 <body>
 
-<div>
-  <h1> Configurator here ---->>>
-  </h1>
-</div>
+<div class="myDiv">
+    <h1> Configurator here ---->>>
+    </h1>
 
-<button onclick="window.location.href='/configurator/sedan'">Sedan Configurator</button>
-<button onclick="window.location.href='/configurator/suv'">SUV Configurator</button>
+    <button onclick="window.location.href='/configurator/sedan'">Sedan Configurator</button>
+    <button onclick="window.location.href='/configurator/suv'">SUV Configurator</button>
+</div>
 
 </body>
 </html>

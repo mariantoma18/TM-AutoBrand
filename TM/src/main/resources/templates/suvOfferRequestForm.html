@@ -3,37 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Suv Offer Request Form</title>
+    <link rel="stylesheet">
+
+    <style>
+        div.myDiv {
+	        width: 50%;
+			margin: auto;
+			border: 2px solid black;
+			text-align: center;
+        }
+
+        body {
+	        text-align: center;
+			box-align: center;
+		}
+    </style>
 </head>
 <body>
 
 <form th:action="@{/configurator/suvOfferRequest}" th:object="${offerRequestForm}" method="post">
-    <label>First Name:</label>
-    <label>
-        <input type="text" th:field="*{firstName}" required>
-    </label>
-    <br/>
 
-    <label>Last Name:</label>
-    <label>
-        <input type="text" th:field="*{lastName}" required>
-    </label>
-    <br/>
+    <div clas="myDiv">
+        <label>First Name:</label>
+        <label>
+            <input type="text" th:field="*{firstName}" required>
+        </label>
+        <br/>
 
-    <label>Email:</label>
-    <label>
-        <input type="text" th:field="*{email}" required>
-    </label>
-    <br/>
+        <label>Last Name:</label>
+        <label>
+            <input type="text" th:field="*{lastName}" required>
+        </label>
+        <br/>
 
-    <label>Phone Number:</label>
-    <label>
-        <input type="text" th:field="*{phoneNumber}" required>
-    </label>
-    <br/>
+        <label>Email:</label>
+        <label>
+            <input type="text" th:field="*{email}" required>
+        </label>
+        <br/>
 
-    <input type="hidden" name="id" th:value="${id}">
+        <label>Phone Number:</label>
+        <label>
+            <input type="text" th:field="*{phoneNumber}" required>
+        </label>
+        <br/>
 
-    <button type="submit">Submit Offer Request</button>
+        <input type="hidden" name="id" th:value="${id}">
+
+        <button type="submit">Submit Offer Request</button>
+    </div>
 
 </form>
 

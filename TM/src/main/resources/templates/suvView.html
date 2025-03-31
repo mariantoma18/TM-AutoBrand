@@ -2,25 +2,40 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-  <title>Suv View</title>
+    <title>Suv View</title>
+    <link rel="stylesheet">
+
+    <style>
+        div.myDiv {
+	        width: 50%;
+			margin: auto;
+			border: 2px solid black;
+			text-align: center;
+        }
+
+        body {
+	        text-align: center;
+			box-align: center;
+		}
+    </style>
 </head>
 <body>
 
-<div>
-  <h1>
-    Your SUV here ---->>
-  </h1>
+<div class="myDiv">
+    <h1>
+        Your SUV here ---->>
+    </h1>
+
+    <p>Exterior: <span th:text="${configuredSuvDto.exteriorColor}"></span></p>
+    <p>Interior: <span th:text="${configuredSuvDto.interiorColor}"></span></p>
+    <p>Engine: <span th:text="${configuredSuvDto.engineType.description}"></span></p>
+    <p>Final price: <span th:text="${configuredSuvDto.finalPrice} + ' ' + Euro"></span></p>
+
+    <form th:action="@{/configurator/suvOfferRequest}" method="get">
+        <input type="hidden" name="id" th:value="${configuredSuvDto.id}"/>
+        <button type="submit">Request Offer</button>
+    </form>
 </div>
-
-<p>Exterior: <span th:text="${configuredSuvDto.exteriorColor}"></span></p>
-<p>Interior: <span th:text="${configuredSuvDto.interiorColor}"></span></p>
-<p>Engine: <span th:text="${configuredSuvDto.engineType.description}"></span></p>
-<p>Final price: <span th:text="${configuredSuvDto.finalPrice} + ' ' + Euro"></span></p>
-
-<form th:action="@{/configurator/suvOfferRequest}" method="get">
-    <input type="hidden" name="id" th:value="${configuredSuvDto.id}" />
-    <button type="submit">Request Offer</button>
-</form>
 
 
 </body>
