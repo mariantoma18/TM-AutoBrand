@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum EngineType {
-        PETROL_2_0_TSI ("PETROL - 2.0 TSI EVO", 2000),
+        PETROL_2_0_TSX ("PETROL - 2.0 TSX EVO", 2000),
         DIESEL_1_6_TDI("DIESEL - 1.6 TDX ECO", 2500);
 
         private final String description;
