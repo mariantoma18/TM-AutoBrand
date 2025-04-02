@@ -40,8 +40,11 @@
 
         <div class="section">
             <div class="left">
-                <div id="carSpin" class="Sirv"
-                     data-src="https://mariantoma.sirv.com/Elyssion_sedan/red_sedan/red_sedan.spin"></div>
+                <div class="image-carousel">
+                    <button type="button" class="carousel-btn prev" onclick="prevImage()">❮</button>
+                        <img id="carouselImage" class="carousel-image" src="https://mariantoma.sirv.com/Elyssion_sedan/black_sedan/1.png" alt="Gallery Image">
+                    <button type="button" class="carousel-btn next" onclick="nextImage()">❯</button>
+                </div>
             </div>
 
             <div class="right">
@@ -50,7 +53,7 @@
                         <input type="radio" class="btn-check" autocomplete="off" checked
                                th:field="*{exteriorColor}" th:value="${exterior.name()}"
                                th:attr="data-color=${exterior.name()}"
-                               onclick="changeColorFromData(this); enableSubmit()"
+                               onclick="changeColorGallery(this.dataset.color); enableSubmit()"
                                required>
                         <span class="btn btn-outline-custom" for="btn-check-custom"
                               th:text="${exterior.description} + ' (' + ${exterior.optionPrice} + ' ' + Euro + ')'"></span>

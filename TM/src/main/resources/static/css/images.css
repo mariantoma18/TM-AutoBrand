@@ -13,3 +13,28 @@
     margin: auto;
     object-fit: contain;
 }
+
+.image-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.carousel-image {
+    width: 500px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.carousel-btn {
+    font-size: 50px;
+    background-color: transparent;
+    border: none;
+    color: #BFA181;
+}
+
+.carousel-btn:hover {
+    scale: 1.5;
+}

@@ -1,33 +1,65 @@
+const colorImageGalleryMap = {
+    RED: [
+        "https://mariantoma.sirv.com/Elyssion_sedan/red_sedan/1.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/red_sedan/3.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/red_sedan/5.png"
+    ],
+    BLUE: [
+        "https://mariantoma.sirv.com/Elyssion_sedan/blue_sedan/1.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/blue_sedan/3.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/blue_sedan/5.png"
+    ],
+    BLACK: [
+        "https://mariantoma.sirv.com/Elyssion_sedan/black_sedan/1.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/black_sedan/3.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/black_sedan/5.png"
+    ],
+    SILVER: [
+        "https://mariantoma.sirv.com/Elyssion_sedan/silver_sedan/1.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/silver_sedan/3.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/silver_sedan/5.png"
+    ],
+    GREEN: [
+        "https://mariantoma.sirv.com/Elyssion_sedan/green_sedan/1.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/green_sedan/3.png",
+        "https://mariantoma.sirv.com/Elyssion_sedan/green_sedan/5.png"
+    ],
+};
 
-    const colorSpinMap = {
-        RED: "https://mariantoma.sirv.com/Elyssion_sedan/red_sedan/red_sedan.spin",
-        BLUE: "https://mariantoma.sirv.com/Elyssion_sedan/blue_sedan/blue_sedan.spin",
-        BLACK: "https://mariantoma.sirv.com/Elyssion_sedan/black_sedan/black_sedan.spin",
-        SILVER: "https://mariantoma.sirv.com/Elyssion_sedan/silver_sedan/silver_sedan.spin",
-        GREEN: "https://mariantoma.sirv.com/Elyssion_sedan/green_sedan/green_sedan.spin"
-    };
+let currentGalleryImages = [];
+let currentIndex = 0;
 
-    function changeColorFromData(element) {
-        const colorKey = element.dataset.color;
-        changeSpin(colorKey);
+function changeColorGallery(colorKey) {
+    const imageUrls = colorImageGalleryMap[colorKey];
+    if (imageUrls && imageUrls.length > 0) {
+        currentGalleryImages = imageUrls;
+        currentIndex = 0;
+        updateCarouselImage();
+    } else {
+        console.warn("The gallery could not be updated. Check the colorKey:", colorKey);
     }
+}
 
-    function changeSpin(colorKey) {
-        const newUrl = colorSpinMap[colorKey];
-        const oldSpinDiv = document.getElementById("carSpin");
-
-        if (oldSpinDiv && newUrl) {
-            const newSpinDiv = document.createElement("div");
-            newSpinDiv.id = "carSpin";
-            newSpinDiv.className = "Sirv";
-            newSpinDiv.setAttribute("data-src", newUrl);
-
-            oldSpinDiv.parentNode.replaceChild(newSpinDiv, oldSpinDiv);
-            Sirv.start();
-        } else {
-            console.warn("The spin could not be updated. Check the colorKey or the element.");
-        }
+function updateCarouselImage() {
+    const imageElement = document.getElementById("carouselImage");
+    if (imageElement && currentGalleryImages.length > 0) {
+        imageElement.src = currentGalleryImages[currentIndex];
     }
+}
+
+function prevImage() {
+    if (currentGalleryImages.length > 0) {
+        currentIndex = (currentIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+        updateCarouselImage();
+    }
+}
+
+function nextImage() {
+    if (currentGalleryImages.length > 0) {
+        currentIndex = (currentIndex + 1) % currentGalleryImages.length;
+        updateCarouselImage();
+    }
+}
 
     const interiorImageMap = {
     BLACK: "https://mariantoma.sirv.com/interior/black.webp",
