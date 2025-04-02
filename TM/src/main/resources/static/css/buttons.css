@@ -23,3 +23,13 @@
     background-color: #BFA181;
     color: #000000;
 }
+
+.side-bar-navigation-button {
+    position: absolute;
+    left: 20px;
+    font-size: 30px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    color: #BFA181;
+}
