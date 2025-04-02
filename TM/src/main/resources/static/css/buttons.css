@@ -9,3 +9,17 @@
     display: block;
     scale:1.2;
 }
+
+.btn-outline-custom {
+    color: #BFA181;
+    border: 2px solid #BFA181;
+    border-radius: 100px;
+    padding:20px;
+    margin:5px;
+}
+
+.btn-outline-custom:hover,
+.btn-check:checked + .btn-outline-custom {
+    background-color: #BFA181;
+    color: #000000;
+}

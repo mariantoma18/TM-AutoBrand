@@ -29,12 +29,14 @@
 
             <div class="right">
                 <div class="exterior-color-div" th:each="exterior : ${availableExteriorOptions}">
-                    <label>
-                        <input type="radio" th:field="*{exteriorColor}" th:value="${exterior.name()}"
+                    <label class="custom-radio-button">
+                        <input type="radio" class="btn-check" autocomplete="off" checked
+                               th:field="*{exteriorColor}" th:value="${exterior.name()}"
                                th:attr="data-color=${exterior.name()}"
                                onclick="changeColorFromData(this); enableSubmit()"
                                required>
-                        <span th:text="${exterior.description} + ' (' + ${exterior.optionPrice} + ' ' + Euro + ')'"></span>
+                        <span class="btn btn-outline-custom" for="btn-check-custom"
+                              th:text="${exterior.description} + ' (' + ${exterior.optionPrice} + ' ' + Euro + ')'"></span>
                     </label>
                 </div>
             </div>
@@ -48,11 +50,13 @@
             <div class="right">
                 <div th:each="interior : ${availableInteriorOptions}">
                     <label>
-                        <input type="radio" th:field="*{interiorColor}" th:value="${interior.name()}"
+                        <input type="radio" class="btn-check" autocomplete="off" checked
+                               th:field="*{interiorColor}" th:value="${interior.name()}"
                                th:attr="data-color=${interior.name()}"
                                onclick="changeInteriorImage(this.dataset.color); enableSubmit()"
                                required>
-                        <span th:text="${interior.description} + ' (' + ${interior.optionPrice} + ' ' + Euro + ')'"></span>
+                        <span class="btn btn-outline-custom" for="btn-check-custom"
+                              th:text="${interior.description} + ' (' + ${interior.optionPrice} + ' ' + Euro + ')'"></span>
                     </label>
                 </div>
             </div>
@@ -66,11 +70,13 @@
             <div class="right">
                 <div th:each="engine : ${availableEngineTypes}">
                     <label>
-                        <input type="radio" th:field="*{engineType}" th:value="${engine.name()}"
+                        <input type="radio" class="btn-check" autocomplete="off" checked
+                               th:field="*{engineType}" th:value="${engine.name()}"
                                th:attr="data-engine=${engine.name()}"
                                onclick="changeEngineImage(this.dataset.engine); enableSubmit()"
                                required>
-                        <span th:text="${engine.description} + ' (' + ${engine.optionPrice} + ' ' + Euro + ')'"></span>
+                        <span class="btn btn-outline-custom" for="btn-check-custom"
+                              th:text="${engine.description} + ' (' + ${engine.optionPrice} + ' ' + Euro + ')'"></span>
                     </label>
                 </div>
             </div>
