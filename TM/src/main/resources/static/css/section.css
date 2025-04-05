@@ -112,3 +112,37 @@
     flex-wrap: nowrap;
     align-items: center;
 }
+
+.section-configurator-choice {
+    background-color: #F1EFEC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 2 / 1;
+    border-radius: 50px;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+}
+
+.sedan-configurator-choice,
+.suv-configurator-choice {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #000000;
+    color: #BFA181;
+    border-radius: 50px;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+}
+
+.sedan-configurator-choice:hover,
+.suv-configurator-choice:hover {
+    scale: 1.2;
+}

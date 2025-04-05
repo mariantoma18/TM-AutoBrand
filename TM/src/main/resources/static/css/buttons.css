@@ -10,6 +10,10 @@
     scale:1.2;
 }
 
+.submit-button:hover {
+    scale: 1.25;
+}
+
 .btn-outline-custom {
     color: #BFA181;
     border: 2px solid #BFA181;
