@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Configurator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/section.css">
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/images.css">
+    <link rel="stylesheet" href="/css/logo.css">
+
+</head>
+<body>
+
+<div class="w3-sidebar w3-bar-block w3-border-right left-side-bar" style="display:none" id="mySidebar">
+    <button onclick="w3_close()" class="w3-bar-item w3-large" style="background-color: black; color: #BFA181">Close
+        &times;
+    </button>
+    <a href="#" class="w3-bar-item w3-button">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button">Link 3</a>
+</div>
+
+<div class="side-bar">
+    <button class="side-bar-navigation-button" onclick="w3_open()">☰</button>
+    <a href="/">
+        <img class="logo-img" src="/images/TM-logo-white.png" alt="TM">
+    </a>
+</div>
+
+<div class="main-div">
+
+    <div class="section">
+        <div class="model-image">
+            <img class="model-description-image Sirv"
+                 data-src="https://mariantoma.sirv.com/Elyssion_sedan/black_sedan/1.png" alt="">
+        </div>
+
+        <div class="model-text">
+            <h2><b>Elyssion</b><br>Elegance in Motion<br></h2>
+            <p>
+                Experience the new <strong>Elyssion</strong>, a model that seamlessly blends dynamic design with refined
+                technology.
+                Its sculpted body, sleek lines, and bold front grille create a modern, sophisticated
+                presence — perfect for those who drive with confidence and style.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+
+        <div class="model-text">
+            <p>
+                Inside, Elyssion welcomes you with a spacious, premium interior, available in three elegant color
+                options: <strong>Black</strong>, <strong>White</strong>, or <strong>Tan</strong> — each offering a
+                distinct character and atmosphere.
+            </p>
+        </div>
+
+        <div class="model-image">
+            <img class="Sirv" data-src="https://mariantoma.sirv.com/interior/white.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="model-image">
+            <img class="model-description-image Sirv" data-src="https://mariantoma.sirv.com/Engine_type/2.0%20TSX.png"
+                 alt="">
+        </div>
+
+        <div class="model-text">
+            <p>
+                Under the hood, you can choose from two efficient powertrains:
+            </p>
+
+            <ul>
+                <li><strong>Petrol 2.0 TSX</strong> – delivering smooth, responsive performance</li>
+                <li><strong>Diesel 2.0 TDX</strong> – engineered for optimized fuel efficiency and strong torque</li>
+            </ul>
+
+            <p>
+                Elyssion redefines the modern sedan — elegant, intelligent, and ready for the road ahead.
+            </p>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="model-text">
+            <h2><b>Teraon</b><br>Power Meets Presence<br></h2>
+            <p>
+                Introducing the all-new <strong>Teraon</strong>, a bold expression of strength, versatility, and modern
+                design.
+                With its elevated stance, sharp contours, and striking front end, Teraon commands attention whether on
+                city streets or rugged terrain.
+            </p>
+        </div>
+
+        <div class="model-image">
+            <img class="model-description-image Sirv" data-src="https://mariantoma.sirv.com/Teraon_SUV/black_SUV/1.png"
+                 alt="">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="model-image">
+            <img class="Sirv" data-src="https://mariantoma.sirv.com/interior/black.webp" alt="">
+        </div>
+
+        <div class="model-text">
+            <p>
+                Step inside and discover a spacious, high-comfort cabin crafted with attention to detail.
+                The interior is available in three refined color options:
+                <strong>Black</strong>, <strong>White</strong>, or <strong>Tan</strong>, each designed to match your
+                individual taste and driving mood.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="model-text">
+            <p>
+                Choose the performance that suits your journey:
+            </p>
+            <ul>
+                <li><strong>Petrol 2.0 TSX</strong> – for dynamic driving and refined acceleration</li>
+                <li><strong>Diesel 2.0 TDX</strong> – built for endurance, torque, and long-distance efficiency</li>
+            </ul>
+
+            <p>
+                Engineered to adapt, built to impress — Teraon is your perfect companion for any road, any destination.
+            </p>
+        </div>
+
+        <div class="model-image">
+            <img class="model-description-image Sirv" data-src="https://mariantoma.sirv.com/Engine_type/2.0%20TDX.png"
+                 alt="">
+        </div>
+    </div>
+    <button onclick="window.location.href='/configurator'" class="side-bar-button">Configurator</button>
+</div>
+
+<script>
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

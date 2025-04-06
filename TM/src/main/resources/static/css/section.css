@@ -10,7 +10,7 @@
     flex-wrap: nowrap;
 }
 
-.left {
+.left, .model-image {
     width: 70%;
     height: 100%;
     display: flex;
@@ -21,7 +21,7 @@
     border-radius: 50px;
 }
 
-.right {
+.right, .model-text{
     display: flex;
     align-items: center;
     flex-direction: column;

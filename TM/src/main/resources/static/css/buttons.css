@@ -38,3 +38,49 @@
     border: none;
     color: #BFA181;
 }
+
+.side-bar-button {
+    background-color: #000000;
+    color: #BFA181;
+    border-radius: 9999px;
+    padding: 10px 20px;
+    margin: 10px 20px;
+    border: none;
+    font-weight: bold;
+    display: block;
+}
+
+.side-bar-button:hover {
+    scale:1.1;
+}
+
+.side-bar-cart-button {
+    position: absolute;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: none;
+    color: #BFA181;
+    font-weight: bold;
+    display: block;
+    scale:1.8;
+}
+
+.side-bar-cart-button:hover {
+    scale:1.9;
+}
+
+.home-page-configurator-button {
+    background-color: #BFA181;
+    color: #000000;
+    border-radius: 9999px;
+    padding: 10px 20px;
+    margin: 10px 20px;
+    border: none;
+    font-weight: bold;
+    display: block;
+}
+
+.home-page-configurator-button:hover {
+    scale:1.1;
+}
