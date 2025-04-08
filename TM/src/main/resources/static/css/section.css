@@ -146,3 +146,8 @@
 .suv-configurator-choice:hover {
     scale: 1.2;
 }
+
+.model-type-selector {
+    scale:1.2;
+    border-radius: 50px;
+}
