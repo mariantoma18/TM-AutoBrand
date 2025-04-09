@@ -81,7 +81,7 @@ function nextImage() {
 
     const engineImageMap = {
     PETROL_2_0_TSX: "https://mariantoma.sirv.com/Engine_type/2.0%20TSX.png",
-    DIESEL_1_6_TDI: "https://mariantoma.sirv.com/Engine_type/2.0%20TDX.png"
+    DIESEL_2_0_TDX: "https://mariantoma.sirv.com/Engine_type/2.0%20TDX.png"
 };
 
     function changeEngineImage(engineKey) {

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Service Request Confirmation</title>
+    <title>Test Drive Confirmation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
@@ -40,32 +40,35 @@
 
     <div class="confirmation">
         <div class="up">
-            <h1><strong>Thank you for booking your service appointment.<br>
-                Your request has been successfully submitted.<br>
-                A service representative will reach out to confirm the arrangements.<br>
-                Below is a summary of your selected details.<br></strong>
+            <h1><strong>Your request has been successfully submitted.<br>
+                A representative will contact you shortly to confirm the details.<br>
+                Below is a summary of your selected preferences:<br></strong>
             </h1>
         </div>
 
         <div class="down">
             <p><b>Client Details:</b>
-                <span th:text="${serviceRequest.firstName} + ' ' + ${serviceRequest.lastName}"></span>
+                <span th:text="${testDrive.firstName} + ' ' + ${testDrive.lastName}"></span>
             </p>
 
             <p><b>Email:</b>
-                <span th:text="${serviceRequest.email}"></span>
+                <span th:text="${testDrive.email}"></span>
             </p>
 
             <p><b>Phone Number:</b>
-                <span th:text="${serviceRequest.phoneNumber}"></span>
+                <span th:text="${testDrive.phoneNumber}"></span>
             </p>
 
             <p><b>Model type:</b>
-                <span th:text="${serviceRequest.modelType.description}"></span>
+                <span th:text="${testDrive.modelType.description}"></span>
+            </p>
+
+            <p><b>Engine type:</b>
+            <span th:text="${testDrive.engineType.description}"></span>
             </p>
 
             <p><b>Your appointment is scheduled for:</b></p>
-                <p th:text="${#temporals.format(selectedDate, 'dd MMM yyyy, HH:mm')}"></p>
+            <p th:text="${#temporals.format(selectedDate, 'dd MMM yyyy, HH:mm')}"></p>
             <br>
 
             <p><b><i class="bi bi-patch-exclamation-fill"></i> Attention:</b></p>
@@ -82,11 +85,10 @@
     function w3_open() {
       document.getElementById("mySidebar").style.display = "block";
     }
-
+  
     function w3_close() {
       document.getElementById("mySidebar").style.display = "none";
     }
 </script>
-
 </body>
 </html>

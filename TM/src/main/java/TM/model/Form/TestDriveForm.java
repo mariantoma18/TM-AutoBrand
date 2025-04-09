@@ -1,11 +1,13 @@
-package TM.model;
+package TM.model.Form;
+
+import TM.model.Enums.EngineType;
 import TM.model.Enums.ModelType;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class ServiceRequestForm {
+public class TestDriveForm {
 
     private String firstName;
     private String lastName;
@@ -13,4 +15,5 @@ public class ServiceRequestForm {
     private String phoneNumber;
     private LocalDateTime dateTime;
     private ModelType modelType;
+    private EngineType engineType;
 }

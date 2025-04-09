@@ -1,6 +1,6 @@
 package TM.service;
 
-import TM.model.CarConfiguratorForm;
+import TM.model.Form.CarConfiguratorForm;
 import TM.model.Dto.SedanDto;
 import TM.model.Sedan;
 import TM.repository.SedanRepository;

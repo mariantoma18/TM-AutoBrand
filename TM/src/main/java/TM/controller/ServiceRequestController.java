@@ -2,7 +2,7 @@ package TM.controller;
 
 import TM.model.Enums.ModelType;
 import TM.model.ServiceRequest;
-import TM.model.ServiceRequestForm;
+import TM.model.Form.ServiceRequestForm;
 import TM.service.ServiceRequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

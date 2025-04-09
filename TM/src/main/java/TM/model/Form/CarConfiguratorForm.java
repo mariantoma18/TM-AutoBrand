@@ -1,4 +1,4 @@
-package TM.model;
+package TM.model.Form;
 
 import TM.model.Enums.EngineType;
 import TM.model.Enums.ExteriorColor;

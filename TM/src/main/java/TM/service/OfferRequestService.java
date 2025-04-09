@@ -1,7 +1,7 @@
 package TM.service;
 
 import TM.model.OfferRequest;
-import TM.model.OfferRequestForm;
+import TM.model.Form.OfferRequestForm;
 import TM.model.Sedan;
 import TM.model.Suv;
 import TM.repository.OfferRequestRepository;

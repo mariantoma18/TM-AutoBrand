@@ -1,9 +1,7 @@
 package TM.service;
 
-import TM.model.CarConfiguratorForm;
-import TM.model.Dto.SedanDto;
+import TM.model.Form.CarConfiguratorForm;
 import TM.model.Dto.SuvDto;
-import TM.model.Sedan;
 import TM.model.Suv;
 import TM.repository.SuvRepository;
 import lombok.RequiredArgsConstructor;
