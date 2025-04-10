@@ -151,3 +151,46 @@
     scale:1.2;
     border-radius: 50px;
 }
+
+.text-block {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #000000;
+}
+
+.text-block h2 {
+    color: #BFA181;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.text-block p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333333;
+}
+
+.home-page-text-section {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: solid 2px #BFA181;
+  border-radius: 50px;
+}
+
+.home-page-text-section:hover {
+    scale: 1.05;
+    background-color: #F1EFEC;
+}
+
+.text-block-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding: 20px;
+}

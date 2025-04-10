@@ -31,3 +31,54 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.timeline-event {
+    border-left: 3px solid #BFA181;
+    padding-left: 20px;
+    position: relative;
+}
+
+.timeline-event:hover {
+    scale: 1.2;
+}
+
+.timeline-year {
+    font-weight: bold;
+    color: #BFA181;
+    font-size: 20px;
+    position: relative;
+}
+
+.brand-quote {
+    font-style: italic;
+    color: #BFA181;
+    font-size: 20px;
+    margin-top: 40px;
+    padding: 20px;
+    border-left: 4px solid #BFA181;
+    background-color: #F1EFEC;
+    border-radius: 50px;
+}
+
+.brand-quote:hover {
+    scale: 1.2;
+}
+
+.quote-author {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #000;
+    font-size: 16px;
+    text-align: center;
+}
+
