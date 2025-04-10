@@ -1,5 +1,6 @@
 package TM.model.Form;
 
+import TM.model.Enums.DealershipLocation;
 import TM.model.Enums.EngineType;
 import TM.model.Enums.ModelType;
 import lombok.Data;
@@ -16,4 +17,5 @@ public class TestDriveForm {
     private LocalDateTime dateTime;
     private ModelType modelType;
     private EngineType engineType;
+    private DealershipLocation dealershipLocation;
 }

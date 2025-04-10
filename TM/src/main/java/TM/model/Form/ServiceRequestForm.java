@@ -1,4 +1,5 @@
 package TM.model.Form;
+import TM.model.Enums.DealershipLocation;
 import TM.model.Enums.ModelType;
 import lombok.Data;
 
@@ -13,4 +14,5 @@ public class ServiceRequestForm {
     private String phoneNumber;
     private LocalDateTime dateTime;
     private ModelType modelType;
+    private DealershipLocation dealershipLocation;
 }

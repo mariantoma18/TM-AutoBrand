@@ -1,5 +1,6 @@
 package TM.controller;
 
+import TM.model.Enums.DealershipLocation;
 import TM.model.Enums.ModelType;
 import TM.model.ServiceRequest;
 import TM.model.Form.ServiceRequestForm;
@@ -29,6 +30,7 @@ public class ServiceRequestController {
         model.addAttribute("now", nowFormatted);
         model.addAttribute("serviceRequestForm", new ServiceRequestForm());
         model.addAttribute("modelTypes", ModelType.values());
+        model.addAttribute("dealershipLocations", DealershipLocation.values());
         return "serviceRequestForm";
     }
 

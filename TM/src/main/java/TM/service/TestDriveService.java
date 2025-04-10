@@ -20,7 +20,8 @@ public class TestDriveService {
                 testDriveForm.getPhoneNumber(),
                 testDriveForm.getDateTime(),
                 testDriveForm.getModelType(),
-                testDriveForm.getEngineType());
+                testDriveForm.getEngineType(),
+                testDriveForm.getDealershipLocation());
 
         testDrive.setDateTime(testDriveForm.getDateTime());
 

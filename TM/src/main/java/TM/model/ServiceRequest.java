@@ -1,5 +1,6 @@
 package TM.model;
 
+import TM.model.Enums.DealershipLocation;
 import TM.model.Enums.ModelType;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,11 +27,15 @@ public class ServiceRequest {
     @Enumerated(EnumType.STRING)
     private ModelType modelType;
 
-    public ServiceRequest(String firstName, String lastName, String email, String phoneNumber, ModelType modelType) {
+    @Enumerated(EnumType.STRING)
+    private DealershipLocation dealershipLocation;
+
+    public ServiceRequest(String firstName, String lastName, String email, String phoneNumber, ModelType modelType, DealershipLocation dealershipLocation) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.modelType = modelType;
+        this.dealershipLocation = dealershipLocation;
     }
 }

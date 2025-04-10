@@ -1,5 +1,6 @@
 package TM.model;
 
+import TM.model.Enums.DealershipLocation;
 import TM.model.Enums.EngineType;
 import TM.model.Enums.ModelType;
 import jakarta.persistence.*;
@@ -28,6 +29,9 @@ public class TestDrive {
   @Enumerated(EnumType.STRING)
   private EngineType engineType;
 
+  @Enumerated(EnumType.STRING)
+  private DealershipLocation dealershipLocation;
+
   public TestDrive(
       String firstName,
       String lastName,
@@ -35,7 +39,8 @@ public class TestDrive {
       String phoneNumber,
       LocalDateTime dateTime,
       ModelType modelType,
-      EngineType engineType) {
+      EngineType engineType,
+      DealershipLocation dealershipLocation) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
@@ -43,5 +48,6 @@ public class TestDrive {
     this.dateTime = dateTime;
     this.modelType = modelType;
     this.engineType = engineType;
+    this.dealershipLocation = dealershipLocation;
   }
 }

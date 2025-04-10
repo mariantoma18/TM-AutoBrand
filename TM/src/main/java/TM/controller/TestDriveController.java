@@ -1,5 +1,6 @@
 package TM.controller;
 
+import TM.model.Enums.DealershipLocation;
 import TM.model.Enums.EngineType;
 import TM.model.Enums.ModelType;
 import TM.model.Form.TestDriveForm;
@@ -25,6 +26,7 @@ public class TestDriveController {
         model.addAttribute("testDriveForm", new TestDriveForm());
         model.addAttribute("modelTypes", ModelType.values());
         model.addAttribute("engineTypes", EngineType.values());
+        model.addAttribute("dealershipLocations", DealershipLocation.values());
         return "testDriveForm";
     }
 

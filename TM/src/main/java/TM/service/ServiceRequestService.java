@@ -18,7 +18,8 @@ public class ServiceRequestService {
                 serviceRequestForm.getLastName(),
                 serviceRequestForm.getEmail(),
                 serviceRequestForm.getPhoneNumber(),
-                serviceRequestForm.getModelType());
+                serviceRequestForm.getModelType(),
+                serviceRequestForm.getDealershipLocation());
 
         serviceRequest.setDateTime(serviceRequestForm.getDateTime());
 

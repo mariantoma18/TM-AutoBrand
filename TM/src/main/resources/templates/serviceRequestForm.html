@@ -75,12 +75,23 @@
 
             <label class="form-label">Date:<br><span>(select an hour between 09:00 and 17:00)</span></label>
             <label>
-                <input
-                        type="datetime-local"
-                        th:field="*{dateTime}"
-                        th:attr="min=${now}"
-                        max="2030-12-31"
-                        required/>
+                <input class="date-time-selector"
+                       type="datetime-local"
+                       th:field="*{dateTime}"
+                       th:attr="min=${now}"
+                       max="2030-12-31"
+                       required/>
+            </label>
+            <br>
+
+            <label class="form-label">Choose a location:<br><span></span></label>
+            <label>
+                <select class="dealership-location-selector" th:field="*{dealershipLocation}" required>
+                    <option th:each="location : ${dealershipLocations}"
+                            th:value="${location}"
+                            th:text="${location.description}">
+                    </option>
+                </select>
             </label>
             <br>
 

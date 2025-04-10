@@ -95,7 +95,18 @@
             </label>
             <br>
 
-            <button type="submit" class="submit-button">Submit Service Request</button>
+            <label class="form-label">Choose a location:<br><span></span></label>
+            <label>
+                <select class="dealership-location-selector" th:field="*{dealershipLocation}" required>
+                    <option th:each="location : ${dealershipLocations}"
+                            th:value="${location}"
+                            th:text="${location.description}">
+                    </option>
+                </select>
+            </label>
+            <br>
+
+            <button type="submit" class="submit-button">Submit Test-Drive Request</button>
         </div>
     </div>
 </form>
