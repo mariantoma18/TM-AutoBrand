@@ -1,8 +1,6 @@
 package TM.controller;
 
 import TM.model.*;
-import TM.model.Dto.SedanDto;
-import TM.model.Dto.SuvDto;
 import TM.model.Form.CarConfiguratorForm;
 import TM.model.Form.OfferRequestForm;
 import TM.service.*;
