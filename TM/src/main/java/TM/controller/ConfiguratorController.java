@@ -38,8 +38,7 @@ public class ConfiguratorController {
 
     @PostMapping("/sedan")
     public String receiveSedanConfiguration(@ModelAttribute CarConfiguratorForm configuratorForm, Model model){
-        SedanDto configuredSedanDto = sedanConfiguratorService.createSedan(configuratorForm);
-        model.addAttribute("configuredSedanDto", configuredSedanDto);
+        model.addAttribute("configuredSedanDto", sedanConfiguratorService.createSedan(configuratorForm));
         return "sedanView";
     }
 
@@ -52,10 +51,9 @@ public class ConfiguratorController {
 
     @PostMapping("/sedanOfferRequest")
     public String sendSedanOfferRequest(@RequestParam int id, @ModelAttribute OfferRequestForm offerRequestForm, Model model){
-        Sedan sedan = sedanConfiguratorService.getSedanById(id);
-        OfferRequest offer = offerRequestService.mapSedanToOfferRequest(offerRequestForm, sedan);
-        model.addAttribute("offerRequest" , offer);
-        mailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSedan().getExteriorColor().name(), sedan);
+        OfferRequest offer = offerRequestService.mapSedanToOfferRequest(offerRequestForm, sedanConfiguratorService.getSedanById(id));
+        model.addAttribute("offerRequest" , offerRequestService.mapSedanToOfferRequest(offerRequestForm, sedanConfiguratorService.getSedanById(id)));
+        mailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSedan().getExteriorColor().name(), sedanConfiguratorService.getSedanById(id));
         return "sedanOfferConfirmation";
     }
 
@@ -70,8 +68,7 @@ public class ConfiguratorController {
 
     @PostMapping("/suv")
     public String receiveSuvConfiguration(@ModelAttribute CarConfiguratorForm configuratorForm, Model model){
-        SuvDto configuredSuvDto = suvConfiguratorService.createSuv(configuratorForm);
-        model.addAttribute("configuredSuvDto", configuredSuvDto);
+        model.addAttribute("configuredSuvDto", suvConfiguratorService.createSuv(configuratorForm));
         return "suvView";
     }
 
@@ -84,10 +81,9 @@ public class ConfiguratorController {
 
     @PostMapping("/suvOfferRequest")
     public String sendSuvOfferRequest(@RequestParam int id, @ModelAttribute OfferRequestForm offerRequestForm, Model model){
-        Suv suv = suvConfiguratorService.getSuvById(id);
-        OfferRequest offer = offerRequestService.mapSuvToOfferRequest(offerRequestForm, suv);
+        OfferRequest offer = offerRequestService.mapSuvToOfferRequest(offerRequestForm, suvConfiguratorService.getSuvById(id));
         model.addAttribute("offerRequest" , offer);
-        mailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSuv().getExteriorColor().name(), suv);
+        mailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSuv().getExteriorColor().name(), suvConfiguratorService.getSuvById(id));
         return "suvOfferConfirmation";
     }
 
