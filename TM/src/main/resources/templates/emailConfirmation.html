@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #0A1828;
+            background-color: #F1EFEC;
+            padding: 20px;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .header {
+            text-align: center;
+            color: #BFA181;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .body {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #999999;
+            text-align: center;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+<div class="email-container">
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="cid:TM-logo-black.png" alt="TM Motors Logo" style="height: 60px;">
+    </div>
+
+    <div class="header">
+        Offer Request Received
+    </div>
+    <div class="body">
+        <p>Dear Customer,</p>
+
+        <p>Thank you for your interest in configuring one of our TM Motors vehicles.</p>
+
+        <p>We have successfully received your offer request. A TM Motors representative will contact you shortly to
+            discuss your personalized configuration, pricing, and next steps.</p>
+
+        <p>In the meantime, feel free to revisit your configuration or explore more about our models on our
+            <a href="http://localhost:8018" style="color: #BFA181;"><strong>official
+            website</strong></a>.
+        </p>
+
+        <p>
+            View your configured vehicle in 360°:
+            <a href="${spin}" style="color: #BFA181;">Click here</a>
+        </p>
+
+        <p>We appreciate your trust and are excited to help you take the next step toward your new vehicle.</p>
+
+        <p>Best regards,<br>
+            <strong>TM Motors Team</strong></p>
+    </div>
+
+    <div class="footer">
+        TM Motors &copy; 2025 &mdash; Crafted in Romania. Designed for the World.
+    </div>
+</div>
+</body>
+</html>

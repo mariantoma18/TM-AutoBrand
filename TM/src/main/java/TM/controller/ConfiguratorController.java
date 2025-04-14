@@ -5,10 +5,7 @@ import TM.model.Dto.SedanDto;
 import TM.model.Dto.SuvDto;
 import TM.model.Form.CarConfiguratorForm;
 import TM.model.Form.OfferRequestForm;
-import TM.service.ConfiguratorService;
-import TM.service.OfferRequestService;
-import TM.service.SedanConfiguratorService;
-import TM.service.SuvConfiguratorService;
+import TM.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +20,7 @@ public class ConfiguratorController {
     private final SedanConfiguratorService sedanConfiguratorService;
     private final SuvConfiguratorService suvConfiguratorService;
     private final OfferRequestService offerRequestService;
+    private final MailSenderService mailSenderService;
 
     @GetMapping
     public String getConfiguratorPage(){
@@ -57,6 +55,7 @@ public class ConfiguratorController {
         Sedan sedan = sedanConfiguratorService.getSedanById(id);
         OfferRequest offer = offerRequestService.mapSedanToOfferRequest(offerRequestForm, sedan);
         model.addAttribute("offerRequest" , offer);
+        mailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSedan().getExteriorColor().name(), sedan);
         return "sedanOfferConfirmation";
     }
 
@@ -88,6 +87,7 @@ public class ConfiguratorController {
         Suv suv = suvConfiguratorService.getSuvById(id);
         OfferRequest offer = offerRequestService.mapSuvToOfferRequest(offerRequestForm, suv);
         model.addAttribute("offerRequest" , offer);
+        mailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSuv().getExteriorColor().name(), suv);
         return "suvOfferConfirmation";
     }
 
