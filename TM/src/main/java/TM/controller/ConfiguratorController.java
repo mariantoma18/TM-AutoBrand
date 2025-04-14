@@ -18,7 +18,7 @@ public class ConfiguratorController {
     private final SedanConfiguratorService sedanConfiguratorService;
     private final SuvConfiguratorService suvConfiguratorService;
     private final OfferRequestService offerRequestService;
-    private final MailSenderService mailSenderService;
+    private final ConfiguratorMailSenderService configuratorMailSenderService;
 
     @GetMapping
     public String getConfiguratorPage(){
@@ -51,7 +51,7 @@ public class ConfiguratorController {
     public String sendSedanOfferRequest(@RequestParam int id, @ModelAttribute OfferRequestForm offerRequestForm, Model model){
         OfferRequest offer = offerRequestService.mapSedanToOfferRequest(offerRequestForm, sedanConfiguratorService.getSedanById(id));
         model.addAttribute("offerRequest" , offerRequestService.mapSedanToOfferRequest(offerRequestForm, sedanConfiguratorService.getSedanById(id)));
-        mailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSedan().getExteriorColor().name(), sedanConfiguratorService.getSedanById(id));
+        configuratorMailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSedan().getExteriorColor().name(), sedanConfiguratorService.getSedanById(id));
         return "sedanOfferConfirmation";
     }
 
@@ -81,7 +81,7 @@ public class ConfiguratorController {
     public String sendSuvOfferRequest(@RequestParam int id, @ModelAttribute OfferRequestForm offerRequestForm, Model model){
         OfferRequest offer = offerRequestService.mapSuvToOfferRequest(offerRequestForm, suvConfiguratorService.getSuvById(id));
         model.addAttribute("offerRequest" , offer);
-        mailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSuv().getExteriorColor().name(), suvConfiguratorService.getSuvById(id));
+        configuratorMailSenderService.sendEmailConfirmation(offer.getEmail(), offer.getSuv().getExteriorColor().name(), suvConfiguratorService.getSuvById(id));
         return "suvOfferConfirmation";
     }
 
