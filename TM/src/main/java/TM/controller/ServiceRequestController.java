@@ -4,6 +4,7 @@ import TM.model.Enums.DealershipLocation;
 import TM.model.Enums.ModelType;
 import TM.model.ServiceRequest;
 import TM.model.Form.ServiceRequestForm;
+import TM.service.ServiceRequestMailSenderService;
 import TM.service.ServiceRequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 public class ServiceRequestController {
 
     private final ServiceRequestService serviceRequestService;
+    private final ServiceRequestMailSenderService senderService;
 
     @GetMapping
     public String getServiceRequestFormPage(Model model){
@@ -39,6 +41,7 @@ public class ServiceRequestController {
         ServiceRequest serviceRequest = serviceRequestService.mapFormToServiceRequest(serviceRequestForm);
         model.addAttribute("serviceRequest", serviceRequest);
         model.addAttribute("selectedDate", serviceRequestForm.getDateTime());
+        senderService.sendEmailConfirmation(serviceRequest.getEmail(), serviceRequest);
         return "serviceRequestConfirmation";
     }
 }

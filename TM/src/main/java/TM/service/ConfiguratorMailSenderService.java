@@ -33,7 +33,7 @@ public class ConfiguratorMailSenderService {
       helper.setSubject("Offer Request Confirmation");
 
       try (InputStream inputStream =
-          getClass().getResourceAsStream("/templates/emailConfirmation.html")) {
+          getClass().getResourceAsStream("/templates/emailConfirmationConfigurator.html")) {
         htmlEmailTemplate = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
       } catch (IOException e) {
         throw new RuntimeException(e);
