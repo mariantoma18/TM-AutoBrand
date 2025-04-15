@@ -4,7 +4,7 @@ import TM.model.Enums.DealershipLocation;
 import TM.model.Enums.EngineType;
 import TM.model.Enums.ModelType;
 import TM.model.Form.TestDriveForm;
-import TM.model.TestDrive;
+import TM.service.TestDriveMailSenderService;
 import TM.service.TestDriveService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestDriveController {
 
     private final TestDriveService testDriveService;
+    private final TestDriveMailSenderService mailSender;
 
     @GetMapping
     public String getTestDriveFormPage(Model model){
@@ -32,9 +33,9 @@ public class TestDriveController {
 
     @PostMapping
     public String sendTestDriveForm(@ModelAttribute TestDriveForm testDriveForm, Model model){
-        TestDrive testDrive = testDriveService.mapFormToTestDrive(testDriveForm);
-        model.addAttribute("testDrive", testDrive);
+        model.addAttribute("testDrive", testDriveService.mapFormToTestDrive(testDriveForm));
         model.addAttribute("selectedDate", testDriveForm.getDateTime());
+        mailSender.sendEmailConfirmation(testDriveForm.getEmail(), testDriveService.mapFormToTestDrive(testDriveForm));
         return "testDriveConfirmation";
     }
 }

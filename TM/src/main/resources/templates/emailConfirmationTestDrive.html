@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Service Appointment Confirmation</title>
+    <title>Test Drive Confirmation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -48,7 +48,6 @@
     </style>
 </head>
 <body>
-
 <div class="email-container">
 
     <div style="text-align: center; margin-bottom: 20px;">
@@ -56,27 +55,27 @@
     </div>
 
     <div class="header">
-        <h2>Your Service Appointment Is Confirmed</h2>
+        <h2>Your Test Drive Request Is Confirmed</h2>
     </div>
 
     <div class="details">
         <p>Dear <span class="highlight">${firstName} ${lastName}</span>,</p>
 
-        <p>Thank you for choosing TM Motors for your vehicle service. We have successfully received your appointment request.</p>
+        <p>Thank you for your interest in experiencing TM Motors. Your test drive request has been successfully received.</p>
 
         <p><strong>Appointment Details:</strong></p>
         <ul>
             <li><b>Date & Time:</b> ${formattedDateTime}</li>
-            <li><b>Vehicle Model:</b> ${modelType}</li>
-            <li><b>Service Location:</b> ${location}</li>
+            <li><b>Vehicle Model:</b> ${modelType} - ${engineType}</li>
+            <li><b>Dealership Location:</b> ${location}</li>
         </ul>
 
         <p><strong>Your selected dealership:</strong></p>
         <p><a href="${mapLink}" style="color: #BFA181;">View on Google Maps</a></p>
 
-        <p>One of our representatives will reach out to you if any further details are needed.</p>
+        <p>One of our representatives will contact you shortly to confirm the final arrangements and ensure everything is prepared for your visit.</p>
 
-        <p>We look forward to welcoming you at our dealership!</p><br>
+        <p>We look forward to seeing you soon and giving you the full TM driving experience!</p><br>
 
         <p>Best regards,<br>
             <strong>TM Motors Team</strong></p>

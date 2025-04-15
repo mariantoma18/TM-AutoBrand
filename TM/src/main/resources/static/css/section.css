@@ -174,7 +174,8 @@
     color: #333333;
 }
 
-.home-page-text-section {
+.home-page-text-section,
+.contact-page-text-section {
   position: relative;
   min-height: 400px;
   display: flex;
@@ -184,7 +185,8 @@
   border-radius: 50px;
 }
 
-.home-page-text-section:hover {
+.home-page-text-section:hover,
+.contact-page-text-section:hover {
     scale: 1.05;
     background-color: #F1EFEC;
 }
