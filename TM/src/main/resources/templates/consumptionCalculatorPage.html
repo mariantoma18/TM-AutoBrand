@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Consumption Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/section.css">
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/images.css">
+    <link rel="stylesheet" href="/css/logo.css">
+    <link rel="stylesheet" href="/css/table.css">
+</head>
+<body style=" height:100%; overflow-y:auto;">
+<div class="w3-sidebar w3-bar-block w3-border-right left-side-bar" style="display:none" id="mySidebar">
+    <button onclick="w3_close()" class="w3-bar-item w3-large" style="background-color: black; color: #BFA181">Close
+        &times;
+    </button>
+    <a href="#" class="w3-bar-item w3-button">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button">Link 3</a>
+</div>
+
+<div class="side-bar">
+    <button class="side-bar-navigation-button" onclick="w3_open()">☰</button>
+    <a href="/">
+        <img class="logo-img" src="/images/TM-logo-white.png" alt="TM">
+    </a>
+</div>
+
+<div class="main-div">
+    <div class="consumption-page-text-section">
+        <div class="text-block">
+
+            <h2>Available Consumption Values (l/100km)</h2>
+            <table class="consumption-table">
+                <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Engine</th>
+                    <th>Urban</th>
+                    <th>Extra-Urban</th>
+                    <th>Mixed</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="consumption : ${consumptionList}">
+                    <td th:text="${consumption.modelType.description}"></td>
+                    <td th:text="${consumption.engineType.description}"></td>
+                    <td th:text="${consumption.urbanConsumption}"></td>
+                    <td th:text="${consumption.extraUrbanConsumption}"></td>
+                    <td th:text="${consumption.mixedConsumption}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="main-div">
+    <div class="consumption-page-text-section">
+        <div class="text-block">
+            <h2>Fuel Consumption Estimator</h2>
+            <p>
+                Use the calculator below to estimate your monthly fuel consumption based on your selected vehicle model
+                and
+                engine type.
+                Simply enter the average number of kilometers you drive each month, and choose your preferred
+                consumption
+                mode:
+                <strong>Urban</strong>, <strong>Extra-Urban</strong>, or <strong>Mixed</strong>.
+            </p>
+            <p>
+                This tool will help you better understand the fuel needs of your vehicle before making a decision.
+            </p>
+        </div>
+    </div>
+</div>
+
+<form th:action="@{/consumption}" th:object="${consumptionForm}" method="post">
+    <div class="main-div">
+        <div class="form-div">
+
+            <label class="form-label">Model Type:</label>
+            <label>
+                <select th:field="*{modelType}" required>
+                    <option th:each="type : ${modelTypes}"
+                            th:value="${type}"
+                            th:text="${type.description}"></option>
+                </select>
+            </label>
+            <br/>
+
+            <label class="form-label">Engine Type:</label>
+            <label>
+                <select th:field="*{engineType}" required>
+                    <option th:each="type : ${engineTypes}"
+                            th:value="${type}"
+                            th:text="${type.description}"></option>
+                </select>
+            </label>
+            <br/>
+
+            <label class="form-label">Consumption Type:</label>
+            <label>
+                <select th:field="*{consumptionType}" required>
+                    <option th:each="type : ${consumptionTypes}"
+                            th:value="${type}"
+                            th:text="${type.description}"></option>
+                </select>
+            </label>
+            <br/>
+
+            <label class="form-label">Monthly Kilometers:</label>
+            <label>
+                <input type="number" th:field="*{monthlyKms}" min="1" required/>
+            </label>
+            <br/>
+
+            <button type="submit" class="submit-button">Calculate Consumption</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
