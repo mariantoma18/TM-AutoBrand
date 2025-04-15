@@ -6,6 +6,7 @@ import TM.model.Enums.ModelType;
 import TM.model.Form.ConsumptionForm;
 import TM.service.ConsumptionCalculatorService;
 import TM.service.ConsumptionService;
+import TM.service.FuelPriceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ public class ConsumptionCalculatorController {
 
   private final ConsumptionCalculatorService calculatorService;
   private final ConsumptionService consumptionService;
+  private final FuelPriceService fuelPriceService;
 
   @GetMapping
   public String getConsumptionCalculatorPage(Model model) {
@@ -36,12 +38,20 @@ public class ConsumptionCalculatorController {
   public String getConsumptionResult(@ModelAttribute ConsumptionForm consumptionForm, Model model) {
     model.addAttribute(
         "fuelConsumption",
-        calculatorService.getFuelConsumptionInLiters(
+        calculatorService.calculateFuelConsumptionInLiters(
             consumptionForm.getMonthlyKms(),
             consumptionForm.getModelType(),
             consumptionForm.getEngineType(),
             consumptionForm.getConsumptionType()));
-
+    model.addAttribute(
+        "fuelPrice",
+        calculatorService.calculateFuelCost(
+            consumptionForm.getMonthlyKms(),
+            consumptionForm.getModelType(),
+            consumptionForm.getEngineType(),
+            consumptionForm.getConsumptionType()));
+    model.addAttribute("engineType", consumptionForm.getEngineType());
+    model.addAttribute("fuelPrices", fuelPriceService.getFuelPrice());
     return "consumptionResult";
   }
 }

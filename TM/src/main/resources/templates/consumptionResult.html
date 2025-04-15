@@ -41,14 +41,31 @@
             <p><b>Estimated Monthly Fuel Usage:</b></p>
             <p th:text="${fuelConsumption} + ' liters'"></p>
 
-            <br>
-            <a href="/consumption">
-                <button class="submit-button">Back to Calculator</button>
-            </a>
-            <br>
-            <a href="/">
-                <button class="submit-button">Home</button>
-            </a>
+            <p><b>Estimated Monthly Fuel Cost in RON:</b></p>
+            <p th:text="${fuelPrice} + ' RON'"></p>
+
+            <div th:if="${engineType.name() == 'PETROL_2_0_TSX'}">
+                <p><strong>Petrol price:</strong> <span th:text="${fuelPrices.petrolPrice} + ' RON/l'"></span></p>
+            </div>
+
+            <div th:if="${engineType.name() == 'DIESEL_2_0_TDX'}">
+                <p><strong>Diesel price:</strong> <span th:text="${fuelPrices.dieselPrice} + ' RON/l'"></span></p>
+            </div>
+
+            <p>*Fuel prices sourced from
+                <a href="https://www.cargopedia.ro/preturi-carburanti-europa" target="_blank" style="color: #BFA181;">
+                    Cargopedia.ro
+                </a>
+                <br>
+
+                <br>
+                <a href="/consumption">
+                    <button class="submit-button">Back to Calculator</button>
+                </a>
+                <br>
+                <a href="/">
+                    <button class="submit-button">Home</button>
+                </a>
         </div>
     </div>
 </div>
