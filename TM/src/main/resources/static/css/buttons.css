@@ -70,7 +70,8 @@
     scale:1.9;
 }
 
-.home-page-configurator-button {
+.home-page-configurator-button,
+.accessory-button {
     background-color: #BFA181;
     color: #000000;
     border-radius: 9999px;
