@@ -16,6 +16,8 @@ public class Accessory {
 
     private String name;
     private Double price;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String imageUrl;
 

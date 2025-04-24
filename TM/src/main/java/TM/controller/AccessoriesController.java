@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/accessories")
@@ -56,4 +57,9 @@ public class AccessoriesController {
         return "accessoriesPageMotorOil";
     }
 
+    @GetMapping("/details")
+    public String getAccessoryDetailsPage(@RequestParam int accessoryId, Model model){
+        model.addAttribute("accessory", accessoriesService.getAccessoryById(accessoryId));
+        return "accessoryDetails";
+    }
 }

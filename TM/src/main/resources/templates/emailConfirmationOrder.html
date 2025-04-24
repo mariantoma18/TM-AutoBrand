@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F1EFEC;
+      color: #0A1828;
+      padding: 20px;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .header {
+      text-align: center;
+      color: #BFA181;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .details {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #999999;
+      text-align: center;
+    }
+
+    .highlight {
+      color: #BFA181;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<div class="email-container">
+
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="cid:TM-logo-black.png" alt="TM Motors Logo" style="height: 60px;">
+  </div>
+
+  <div class="header">
+    <h2>Your Order Has Been Confirmed</h2>
+  </div>
+
+  <div class="details">
+    <p>Dear <span class="highlight">${order.firstName} ${order.lastName}</span>,</p>
+
+    <p>Thank you for your order with TM Motors. Your order has been successfully received and is now being processed.</p>
+
+    <p><strong>Order Details:</strong></p>
+    <ul>
+      <li><b>First Name:</b> ${order.firstName}</li>
+      <li><b>Last Name:</b> ${order.lastName}</li>
+      <li><b>Email:</b> ${order.email}</li>
+      <li><b>Phone Number:</b> ${order.phoneNumber}</li>
+      <li><b>Delivery Address:</b> ${order.deliveryAddress}</li>
+      <li><b>Cart Total:</b> ${order.cartPrice} RON</li>
+      <li><b>Shipping Cost:</b> ${order.shippingCost} RON</li>
+      <li><b>Order Total:</b> ${order.orderTotalPrice} RON</li>
+    </ul>
+
+    <p>We will start processing your order immediately, and you will be notified once your order is shipped.</p>
+
+    <p>Thank you for choosing TM Motors!</p><br>
+
+    <p>Best regards,<br>
+      <strong>TM Motors Team</strong></p>
+  </div>
+
+  <div class="footer">
+    TM Motors &copy; 2025 &mdash; Crafted in Romania. Designed for the World.<br>
+    <a href="https://www.tm-motors.ro" style="color: #BFA181; text-decoration: none;">Visit our website</a>
+  </div>
+</div>
+
+</body>
+</html>

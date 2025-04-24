@@ -51,17 +51,18 @@
     <div class="accessory-categories-section">
         <div class="category-block" th:each="accessory : ${accessories}">
 
-            <div class="accessory-image">
-                <img alt="Image"
-                     th:src="@{${accessory.imageUrl}}" src="">
-            </div>
+            <a th:href="@{'/accessories/details?accessoryId=' + ${accessory.id}}">
+                <div class="accessory-image">
+                    <img alt="Image"
+                         th:src="@{${accessory.imageUrl}}" src="">
+                </div>
 
-            <div class="accessory-text">
-                <h2 th:text="${accessory.name}"></h2>
-                <p th:text="${accessory.price} + ' RON'"></p>
-            </div>
+                <div class="accessory-text">
+                    <h2 th:text="${accessory.name}"></h2>
+                    <b><p th:text="${accessory.price} + ' RON'"></p></b>
+                </div>
+            </a>
 
-            <button id="submitButton" class="submit-button" type="submit"><i class="bi bi-basket2-fill"></i></button>
         </div>
     </div>
 </div>

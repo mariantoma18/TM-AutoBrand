@@ -29,7 +29,7 @@ public class TestDriveMailSenderService {
 
       helper.setFrom("marian.toma2818@gmail.com");
       helper.setTo(clientEmail);
-      helper.setSubject("Service Request Confirmation");
+      helper.setSubject("Test-Drive Request Confirmation");
 
       try (InputStream inputStream =
           getClass().getResourceAsStream("/templates/emailConfirmationTestDrive.html")) {

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Exterior Accessories</title>
+    <title>Accessory Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
@@ -48,33 +48,35 @@
 </div>
 
 <div class="main-div">
-    <div class="accessory-categories-section">
-        <div class="category-block" th:each="accessory : ${accessories}">
 
-            <a th:href="@{'/accessories/details?accessoryId=' + ${accessory.id}}">
-                <div class="accessory-image">
-                    <img alt="Image"
-                         th:src="@{${accessory.imageUrl}}" src="">
-                </div>
+    <div class="home-page-text-section" th:object="${accessory}">
+        <div class="accessory-details-text">
+            <h2 th:text="${accessory.name}"></h2>
+        </div>
 
-                <div class="accessory-text">
-                    <h2 th:text="${accessory.name}"></h2>
-                    <b><p th:text="${accessory.price} + ' RON'"></p></b>
-                </div>
-            </a>
+        <div class="accessory-details-image">
+            <img alt="Image"
+                 th:src="@{${accessory.imageUrl}}" src="">
+        </div>
+
+        <div class="accessory-details-text">
+            <p th:text="${accessory.description}"></p>
+            <b><p th:text="${accessory.price} + ' RON'"></p></b>
+
+            <form th:action="@{/cart/add}" method="post">
+                <input type="hidden" name="accessoryId" th:value="${accessory.id}">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" class="submit-button">
+                    <i class="bi bi-basket2-fill"></i> Add to Cart
+                </button>
+            </form>
+
+            <div th:if="${message}">
+                <p th:text="${message}"></p>
+            </div>
         </div>
     </div>
 </div>
-
-<script>
-    function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-    }
-
-    function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-    }
-</script>
 
 </body>
 </html>
