@@ -7,9 +7,11 @@ import TM.model.Form.ConsumptionForm;
 import TM.service.ConsumptionCalculatorService;
 import TM.service.ConsumptionService;
 import TM.service.FuelPriceService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +37,20 @@ public class ConsumptionCalculatorController {
   }
 
   @PostMapping
-  public String getConsumptionResult(@ModelAttribute ConsumptionForm consumptionForm, Model model) {
+  public String getConsumptionResult(
+      @ModelAttribute @Valid ConsumptionForm consumptionForm,
+      BindingResult bindingResult,
+      Model model) {
+
+    if (bindingResult.hasErrors()){
+      model.addAttribute("consumptionForm", consumptionForm);
+      model.addAttribute("modelTypes", ModelType.values());
+      model.addAttribute("engineTypes", EngineType.values());
+      model.addAttribute("consumptionTypes", ConsumptionType.values());
+      model.addAttribute("consumptionList", consumptionService.getAllConsumptionsDetails());
+      return "consumptionCalculatorPage";
+    }
+
     model.addAttribute(
         "fuelConsumption",
         calculatorService.calculateFuelConsumptionInLiters(

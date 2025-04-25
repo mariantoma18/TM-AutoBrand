@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/css/images.css">
     <link rel="stylesheet" href="/css/logo.css">
     <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/errors.css">
 </head>
 <body style=" height:100%; overflow-y:auto;">
 <div class="w3-sidebar w3-bar-block w3-border-right left-side-bar" style="display:none" id="mySidebar">
@@ -124,6 +125,9 @@
                 <input type="number" th:field="*{monthlyKms}" min="1" required/>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('monthlyKms')}" class="error">
+                <p th:errors="*{monthlyKms}"></p>
+            </div>
 
             <button type="submit" class="submit-button">Calculate Consumption</button>
         </div>

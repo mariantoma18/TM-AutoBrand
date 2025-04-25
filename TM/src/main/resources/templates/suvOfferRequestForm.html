@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/images.css">
     <link rel="stylesheet" href="/css/logo.css">
+    <link rel="stylesheet" href="/css/errors.css">
 
 </head>
 <body>
@@ -45,24 +46,36 @@
                 <input type="text" th:field="*{firstName}" required>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('firstName')}" class="error">
+                <p th:errors="*{firstName}"></p>
+            </div>
 
             <label class="form-label">Last Name:</label>
             <label>
                 <input type="text" th:field="*{lastName}" required>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('lastName')}" class="error">
+                <p th:errors="*{lastName}"></p>
+            </div>
 
             <label class="form-label">Email:</label>
             <label>
                 <input type="text" th:field="*{email}" required>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('email')}" class="error">
+                <p th:errors="*{email}"></p>
+            </div>
 
             <label class="form-label">Phone Number:</label>
             <label>
                 <input type="text" th:field="*{phoneNumber}" required>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('phoneNumber')}" class="error">
+                <p th:errors="*{phoneNumber}"></p>
+            </div>
 
             <input type="hidden" name="id" th:value="${id}">
 

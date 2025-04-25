@@ -4,10 +4,12 @@ import TM.model.Order;
 import TM.service.CartService;
 import TM.service.OrderMailSenderService;
 import TM.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -35,8 +37,21 @@ public class CheckoutController {
   @PostMapping("/submitOrder")
   public String sendOrder(
       Authentication authentication,
-      @ModelAttribute Order order,
+      @ModelAttribute @Valid Order order,
+      BindingResult bindingResult,
       Model model) {
+
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("order", order);
+      model.addAttribute(
+          "cartPrice",
+          cartService.getTotalCartPrice(cartService.getCartByUser(authentication.getName())));
+      model.addAttribute("shippingCost", 25);
+      model.addAttribute(
+          "totalPrice",
+          cartService.getTotalCartPrice(cartService.getCartByUser(authentication.getName())) + 25);
+      return "checkoutPage";
+    }
 
     Order savedOrder =
         orderService.sendOrder(

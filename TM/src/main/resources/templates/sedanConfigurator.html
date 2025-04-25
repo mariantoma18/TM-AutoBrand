@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/images.css">
     <link rel="stylesheet" href="/css/logo.css">
+    <link rel="stylesheet" href="/css/errors.css">
 
 </head>
 <body>
@@ -58,6 +59,11 @@
                         <span class="btn btn-outline-custom" for="btn-check-custom"
                               th:text="${exterior.description} + ' (' + ${exterior.optionPrice} + ' ' + Euro + ')'"></span>
                     </label>
+
+                    <div th:if="${#fields.hasErrors('exteriorColor')}" class="error">
+                        <p th:errors="*{exteriorColor}"></p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -79,6 +85,11 @@
                         <span class="btn btn-outline-custom" for="btn-check-custom"
                               th:text="${interior.description} + ' (' + ${interior.optionPrice} + ' ' + Euro + ')'"></span>
                     </label>
+
+                    <div th:if="${#fields.hasErrors('interiorColor')}" class="error">
+                        <p th:errors="*{interiorColor}"></p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -100,6 +111,11 @@
                         <span class="btn btn-outline-custom" for="btn-check-custom"
                               th:text="${engine.description} + ' (' + ${engine.optionPrice} + ' ' + Euro + ')'"></span>
                     </label>
+
+                    <div th:if="${#fields.hasErrors('engineType')}" class="error">
+                        <p th:errors="*{engineType}"></p>
+                    </div>
+
                 </div>
             </div>
         </div>

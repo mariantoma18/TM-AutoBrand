@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/images.css">
     <link rel="stylesheet" href="/css/logo.css">
+    <link rel="stylesheet" href="/css/errors.css">
 </head>
 <body>
 <div class="w3-sidebar w3-bar-block w3-border-right left-side-bar" style="display:none" id="mySidebar">
@@ -73,36 +74,54 @@
                 <input type="text" th:field="*{firstName}" required/>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('firstName')}" class="error">
+                <p th:errors="*{firstName}"></p>
+            </div>
 
             <label class="form-label">Last Name:</label>
             <label>
                 <input type="text" th:field="*{lastName}" required/>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('lastName')}" class="error">
+                <p th:errors="*{lastName}"></p>
+            </div>
 
             <label class="form-label">Email:</label>
             <label>
                 <input type="email" th:field="*{email}" required/>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('email')}" class="error">
+                <p th:errors="*{email}"></p>
+            </div>
 
             <label class="form-label">Phone Number:</label>
             <label>
                 <input type="text" th:field="*{phoneNumber}" required/>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('phoneNumber')}" class="error">
+                <p th:errors="*{phoneNumber}"></p>
+            </div>
 
             <label class="form-label">Subject:</label>
             <label>
                 <input type="text" th:field="*{emailSubject}" required/>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('emailSubject')}" class="error">
+                <p th:errors="*{emailSubject}"></p>
+            </div>
 
             <label class="form-label">Message:</label>
             <label>
                 <textarea th:field="*{emailContent}" rows="6" required></textarea>
             </label>
             <br/>
+            <div th:if="${#fields.hasErrors('emailContent')}" class="error">
+                <p th:errors="*{emailContent}"></p>
+            </div>
 
             <button type="submit" class="submit-button">Send Message</button>
 

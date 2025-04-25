@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/css/images.css">
     <link rel="stylesheet" href="/css/logo.css">
     <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/errors.css">
 
 </head>
 <body>
@@ -54,32 +55,47 @@
             <h2>Your Cart</h2>
             <form th:action="@{/checkout/submitOrder}" method="post" th:object="${order}">
 
-                    <label class="form-label">First Name:</label>
-                    <label>
-                        <input type="text" th:field="*{firstName}" required/>
-                    </label>
-                    <br/>
+                <label class="form-label">First Name:</label>
+                <label>
+                    <input type="text" th:field="*{firstName}" required/>
+                </label>
+                <br/>
+                <div th:if="${#fields.hasErrors('firstName')}" class="error">
+                    <p th:errors="*{firstName}"></p>
+                </div>
 
-                    <label class="form-label">Last Name:</label>
-                    <label>
-                        <input type="text" th:field="*{lastName}" required/>
-                    </label>
-                    <br/>
+                <label class="form-label">Last Name:</label>
+                <label>
+                    <input type="text" th:field="*{lastName}" required/>
+                </label>
+                <br/>
+                <div th:if="${#fields.hasErrors('lastName')}" class="error">
+                    <p th:errors="*{lastName}"></p>
+                </div>
 
-                    <label class="form-label">Email:</label>
-                    <label>
-                        <input type="text" th:field="*{email}" required/>
-                    </label>
-                    <br/>
+                <label class="form-label">Email:</label>
+                <label>
+                    <input type="text" th:field="*{email}" required/>
+                </label>
+                <br/>
+                <div th:if="${#fields.hasErrors('email')}" class="error">
+                    <p th:errors="*{email}"></p>
+                </div>
 
-                    <label class="form-label">Phone number:</label>
-                    <label>
-                        <input type="text" th:field="*{phoneNumber}" required/>
-                    </label>
-                    <br/>
+                <label class="form-label">Phone number:</label>
+                <label>
+                    <input type="text" th:field="*{phoneNumber}" required/>
+                </label>
+                <br/>
+                <div th:if="${#fields.hasErrors('phoneNumber')}" class="error">
+                    <p th:errors="*{phoneNumber}"></p>
+                </div>
 
-                    <label class="form-label" for="address">Delivery Address:</label><br/>
-                    <textarea id="address" th:field="*{deliveryAddress}" required rows="2" cols="30"></textarea>
+                <label class="form-label" for="address">Delivery Address:</label><br/>
+                <textarea id="address" th:field="*{deliveryAddress}" required rows="2" cols="30"></textarea>
+                <div th:if="${#fields.hasErrors('deliveryAddress')}" class="error">
+                    <p th:errors="*{deliveryAddress}"></p>
+                </div>
 
                 <div>
                     <p>Cart Total: <span th:text="${cartPrice} + ' RON'"></span></p>
@@ -88,7 +104,9 @@
                             th:text="${#numbers.formatDecimal(totalPrice,2,2)} + ' RON'"></span></strong>
                     </p>
                 </div>
-                <button type="submit" class="home-page-configurator-button" style="display: block; margin: 20px auto;">Place Order</button>
+                <button type="submit" class="home-page-configurator-button" style="display: block; margin: 20px auto;">
+                    Place Order
+                </button>
             </form>
         </div>
     </div>

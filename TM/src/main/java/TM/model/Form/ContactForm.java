@@ -1,14 +1,32 @@
 package TM.model.Form;
 
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
 public class ContactForm {
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phoneNumber;
-    private String emailSubject;
-    private String emailContent;
+  @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "{error.firstName.pattern}")
+  @NotBlank(message = "{error.firstName.required}")
+  @Size(min = 2, message = "{error.firstName.size}")
+  private String firstName;
+
+  @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "{error.lastName.pattern}")
+  @NotBlank(message = "{error.lastName.required}")
+  @Size(min = 2, message = "{error.lastName.size}")
+  private String lastName;
+
+  @NotBlank(message = "{error.email.required}")
+  @Email(message = "{error.email.email}")
+  private String email;
+
+  @NotBlank(message = "{error.phoneNumber.required}")
+  @Pattern(regexp = "^0\\d{9}$", message = "{error.phoneNumber.pattern}")
+  private String phoneNumber;
+
+  @NotBlank(message = "{error.emailSubject.required}")
+  private String emailSubject;
+
+  @NotBlank(message = "{error.emailContent.required}")
+  private String emailContent;
 }
