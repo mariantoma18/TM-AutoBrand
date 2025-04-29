@@ -24,6 +24,7 @@ public class SecurityConfig {
                     .defaultSuccessUrl("/", false)
                     .permitAll())
         .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/cart/**").authenticated()
                 .anyRequest().permitAll());
     return http.build();

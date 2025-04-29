@@ -43,6 +43,8 @@ public class Order {
   private double shippingCost;
   private double orderTotalPrice;
 
+  private boolean isDone = false;
+
   public Order(
       User user,
       String firstName,

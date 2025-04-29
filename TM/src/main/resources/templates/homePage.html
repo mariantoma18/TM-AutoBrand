@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>TM</title>
@@ -120,6 +120,11 @@
                 Configurator
             </button>
         </div>
+    </div>
+
+    <div sec:authorize="hasRole('ADMIN')">
+        <button onclick="window.location.href='/admin/homePage'" class="home-page-configurator-button">Admin Page
+        </button>
     </div>
 </div>
 
