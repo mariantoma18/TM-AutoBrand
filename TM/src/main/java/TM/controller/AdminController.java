@@ -1,6 +1,5 @@
 package TM.controller;
 
-import TM.model.Order;
 import TM.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -28,9 +27,9 @@ public class AdminController {
     return "adminViewOrders";
   }
 
-  @PostMapping("viewOrders/markAsDone")
+  @PostMapping("/viewOrders/markOrderAsDone")
   public String markAsDoneOrder(@RequestParam int orderId) {
-    adminService.markAsDone(orderId);
+    adminService.markOrderAsDone(orderId);
     return "redirect:/admin/viewOrders";
   }
 
@@ -40,16 +39,41 @@ public class AdminController {
     return "adminViewDoneOrders";
   }
 
-  @PostMapping("viewOrders/markAsUndone")
+  @PostMapping("/viewOrders/markOrderAsUndone")
   public String markAsUndoneOrder(@RequestParam int orderId) {
-    adminService.markAsUndone(orderId);
+    adminService.markOrderAsUndone(orderId);
     return "redirect:/admin/viewOrders/done";
+  }
+
+  @GetMapping("/viewOrderDetails")
+  public String getOrderDetails(@RequestParam int orderId, Model model) {
+    model.addAttribute("order", adminService.getOrderById(orderId));
+    model.addAttribute("items", adminService.getOrderById(orderId).getOrderItems());
+    return "adminOrderDetails";
   }
 
   @GetMapping("/serviceAppointments")
   public String getServiceAppointmentsPage(Model model) {
-    model.addAttribute("serviceAppointments", adminService.getAllServiceRequests());
+    model.addAttribute("serviceAppointments", adminService.getActiveServiceRequests());
     return "adminServiceAppointments";
+  }
+
+  @PostMapping("/serviceAppointments/markAsDone")
+  public String markAsDoneServiceRequest(@RequestParam int requestId) {
+    adminService.markServiceRequestAsDone(requestId);
+    return "redirect:/admin/serviceAppointments";
+  }
+
+  @GetMapping("/serviceAppointments/done")
+  public String getDoneServiceRequestsPage(Model model) {
+    model.addAttribute("doneServiceAppointments", adminService.getDoneServiceRequests());
+    return "adminViewDoneServiceRequests";
+  }
+
+  @PostMapping("/serviceAppointments/markAsUndone")
+  public String markAsUndoneServiceRequest(@RequestParam int requestId) {
+    adminService.markServiceRequestAsUndone(requestId);
+    return "redirect:/admin/serviceAppointments/done";
   }
 
   @GetMapping("/testDriveRequests")

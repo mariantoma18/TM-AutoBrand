@@ -5,6 +5,9 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "orders")
 @Data
@@ -44,6 +47,9 @@ public class Order {
   private double orderTotalPrice;
 
   private boolean isDone = false;
+
+  @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  private List<OrderItem> orderItems = new ArrayList<>();
 
   public Order(
       User user,

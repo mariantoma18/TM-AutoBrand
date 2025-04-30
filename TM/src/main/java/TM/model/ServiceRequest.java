@@ -23,6 +23,7 @@ public class ServiceRequest {
     private String email;
     private String phoneNumber;
     private LocalDateTime dateTime;
+    private boolean isDone = false;
 
     @Enumerated(EnumType.STRING)
     private ModelType modelType;
