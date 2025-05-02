@@ -78,8 +78,26 @@ public class AdminController {
 
   @GetMapping("/testDriveRequests")
   public String getTestDriveRequestsPage(Model model) {
-    model.addAttribute("testDriveRequests", adminService.getAllTestDriveRequests());
+    model.addAttribute("testDriveRequests", adminService.getActiveTestDriveRequests());
     return "adminTestDriveRequests";
+  }
+
+  @PostMapping("/testDriveRequests/markAsDone")
+  public String markAsDoneTestDriveRequest(@RequestParam int requestId) {
+    adminService.markTestDriveRequestAsDone(requestId);
+    return "redirect:/admin/testDriveRequests";
+  }
+
+  @GetMapping("/testDriveRequests/done")
+  public String getDoneTestDriveRequestsPage(Model model) {
+    model.addAttribute("doneTestDriveRequests", adminService.getDoneTestDriveRequests());
+    return "adminViewDoneTestDriveRequests";
+  }
+
+  @PostMapping("/testDriveRequests/markAsUndone")
+  public String markAsUndoneTestDriveRequest(@RequestParam int requestId) {
+    adminService.markTestDriveRequestAsUndone(requestId);
+    return "redirect:/admin/testDriveRequests/done";
   }
 
   @GetMapping("/contactRequests")

@@ -43,6 +43,8 @@
                     <th>Email</th>
                     <th>Phone number</th>
                     <th>Model Type</th>
+                    <th>Dealership Location</th>
+                    <th>Date & Time</th>
                     <th>Mark as done</th>
                 </tr>
                 </thead>
@@ -56,6 +58,8 @@
                     <td th:text="${request.email}"></td>
                     <td th:text="${request.phoneNumber}"></td>
                     <td th:text="${request.modelType}"></td>
+                    <td th:text="${request.dealershipLocation.description}"></td>
+                    <td th:text="${request.dateTime}"></td>
                     <td>
                         <form action="/admin/serviceAppointments/markAsDone" method="post">
                             <input type="hidden" th:value="${request.id}" name="requestId"/>

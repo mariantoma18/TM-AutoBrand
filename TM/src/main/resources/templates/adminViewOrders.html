@@ -61,7 +61,7 @@
                     <td th:text="${order.deliveryAddress}"></td>
                     <td th:text="${order.orderTotalPrice}"></td>
                     <td>
-                        <form action="/admin/viewOrders/markAsDone" method="post">
+                        <form action="/admin/viewOrders/markOrderAsDone" method="post">
                             <input type="hidden" th:value="${order.id}" name="orderId"/>
                             <button type="submit" value="Done" class="btn btn-outline-success"><i
                                     class="bi bi-check2-circle"></i></button>

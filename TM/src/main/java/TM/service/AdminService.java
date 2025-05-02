@@ -59,15 +59,15 @@ public class AdminService {
     return serviceRequestRepository.findByIsDoneFalse();
   }
 
-  public List<ServiceRequest> getDoneServiceRequests(){
+  public List<ServiceRequest> getDoneServiceRequests() {
     return serviceRequestRepository.findByIsDoneTrue();
   }
 
   public void markServiceRequestAsDone(int requestId) {
     ServiceRequest serviceRequest =
-            serviceRequestRepository
-                    .findById(requestId)
-                    .orElseThrow(() -> new RuntimeException("No request found with id: " + requestId));
+        serviceRequestRepository
+            .findById(requestId)
+            .orElseThrow(() -> new RuntimeException("No request found with id: " + requestId));
 
     serviceRequest.setDone(true);
     serviceRequestRepository.save(serviceRequest);
@@ -75,16 +75,40 @@ public class AdminService {
 
   public void markServiceRequestAsUndone(int requestId) {
     ServiceRequest serviceRequest =
-            serviceRequestRepository
-                    .findById(requestId)
-                    .orElseThrow(() -> new RuntimeException("No request found with id: " + requestId));
+        serviceRequestRepository
+            .findById(requestId)
+            .orElseThrow(() -> new RuntimeException("No request found with id: " + requestId));
 
     serviceRequest.setDone(false);
     serviceRequestRepository.save(serviceRequest);
   }
 
-  public List<TestDrive> getAllTestDriveRequests() {
-    return testDriveRepository.findAll();
+  public List<TestDrive> getActiveTestDriveRequests() {
+    return testDriveRepository.findByIsDoneFalse();
+  }
+
+  public List<TestDrive> getDoneTestDriveRequests() {
+    return testDriveRepository.findByIsDoneTrue();
+  }
+
+  public void markTestDriveRequestAsDone(int requestId) {
+    TestDrive testDrive =
+            testDriveRepository
+                    .findById(requestId)
+                    .orElseThrow(() -> new RuntimeException("No request found with id: " + requestId));
+
+    testDrive.setDone(true);
+    testDriveRepository.save(testDrive);
+  }
+
+  public void markTestDriveRequestAsUndone(int requestId) {
+    TestDrive testDrive =
+            testDriveRepository
+                    .findById(requestId)
+                    .orElseThrow(() -> new RuntimeException("No request found with id: " + requestId));
+
+    testDrive.setDone(false);
+    testDriveRepository.save(testDrive);
   }
 
   public List<Contact> getAllContactRequests() {
