@@ -102,8 +102,32 @@ public class AdminController {
 
   @GetMapping("/contactRequests")
   public String getContactRequestsPage(Model model) {
-    model.addAttribute("contactRequests", adminService.getAllContactRequests());
+    model.addAttribute("contactRequests", adminService.getActiveContactRequests());
     return "adminContactRequests";
+  }
+
+  @PostMapping("/contactRequests/markAsDone")
+  public String markAsDoneContactRequest(@RequestParam int requestId) {
+    adminService.markContactRequestAsDone(requestId);
+    return "redirect:/admin/contactRequests";
+  }
+
+  @GetMapping("/contactRequests/done")
+  public String getDoneContactRequestsPage(Model model) {
+    model.addAttribute("doneContactRequests", adminService.getDoneContactRequests());
+    return "adminViewDoneContactRequests";
+  }
+
+  @PostMapping("/contactRequests/markAsUndone")
+  public String markAsUndoneContactRequest(@RequestParam int requestId) {
+    adminService.markContactRequestAsUndone(requestId);
+    return "redirect:/admin/contactRequests/done";
+  }
+
+  @GetMapping("/viewContactDetails")
+  public String getContactDetails(@RequestParam int contactId, Model model) {
+    model.addAttribute("contactRequest", adminService.getContactById(contactId));
+    return "adminContactDetails";
   }
 
   @GetMapping("/dashboard")

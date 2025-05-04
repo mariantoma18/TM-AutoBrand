@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Done Orders</title>
+    <title>Done Contact Requests</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -33,7 +33,7 @@
     <div class="consumption-page-text-section">
         <div class="text-block">
 
-            <h2>Done Orders</h2>
+            <h2>Done Contact Requests</h2>
             <table class="consumption-table">
                 <thead>
                 <tr>
@@ -42,32 +42,30 @@
                     <th>Customer last name</th>
                     <th>Email</th>
                     <th>Phone number</th>
-                    <th>Delivery Address</th>
-                    <th>Total (RON)</th>
+                    <th>Subject</th>
                     <th>Mark as undone</th>
                     <th>View</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                <tr th:each="order: ${doneOrders}">
-                    <td th:text="${order.id}"></td>
-                    <td th:text="${order.firstName}"></td>
-                    <td th:text="${order.lastName}"></td>
-                    <td th:text="${order.email}"></td>
-                    <td th:text="${order.phoneNumber}"></td>
-                    <td th:text="${order.deliveryAddress}"></td>
-                    <td th:text="${order.orderTotalPrice}"></td>
+                <tr th:each="request: ${doneContactRequests}">
+                    <td th:text="${request.id}"></td>
+                    <td th:text="${request.firstName}"></td>
+                    <td th:text="${request.lastName}"></td>
+                    <td th:text="${request.email}"></td>
+                    <td th:text="${request.phoneNumber}"></td>
+                    <td th:text="${request.emailSubject}"></td>
                     <td>
-                        <form action="/admin/viewOrders/markOrderAsUndone" method="post">
-                            <input type="hidden" th:value="${order.id}" name="orderId"/>
+                        <form action="/admin/contactRequests/markAsUndone" method="post">
+                            <input type="hidden" th:value="${request.id}" name="requestId"/>
                             <button type="submit" value="Done" class="btn btn-outline-success"><i
                                     class="bi bi-box-arrow-left"></i>
                             </button>
                         </form>
                     </td>
                     <td>
-                        <a th:href="@{/admin/viewOrderDetails(orderId=${order.id})}" class="btn btn-outline-warning">
+                        <a th:href="@{/admin/viewContactDetails(contactId=${request.id})}" class="btn btn-outline-warning">
                             <i class="bi bi-eye-fill"></i>
                         </a>
                     </td>
@@ -75,8 +73,8 @@
                 </tbody>
             </table>
         </div>
-        <button onclick="window.location.href='/admin/viewOrders'" class="home-page-configurator-button">View
-            Orders
+        <button onclick="window.location.href='/admin/contactRequests'" class="home-page-configurator-button">View
+            Contact Requests
         </button>
     </div>
 </div>

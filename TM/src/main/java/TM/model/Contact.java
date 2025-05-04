@@ -20,7 +20,9 @@ public class Contact {
     private String email;
     private String phoneNumber;
     private String emailSubject;
+    @Column(columnDefinition = "TEXT")
     private String emailContent;
+    private boolean isDone = false;
 
     public Contact(String firstName, String lastName, String email, String phoneNumber, String emailSubject, String emailContent) {
         this.firstName = firstName;

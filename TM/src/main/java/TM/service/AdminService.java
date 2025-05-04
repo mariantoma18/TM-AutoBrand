@@ -111,7 +111,37 @@ public class AdminService {
     testDriveRepository.save(testDrive);
   }
 
-  public List<Contact> getAllContactRequests() {
-    return contactRepository.findAll();
+  public List<Contact> getActiveContactRequests() {
+    return contactRepository.findByIsDoneFalse();
+  }
+
+  public List<Contact> getDoneContactRequests() {
+    return contactRepository.findByIsDoneTrue();
+  }
+
+  public Contact getContactById(int contactId) {
+    return contactRepository
+            .findById(contactId)
+            .orElseThrow(() -> new RuntimeException("No contact found with id: " + contactId));
+  }
+
+  public void markContactRequestAsDone(int requestId) {
+    Contact contact =
+            contactRepository
+                    .findById(requestId)
+                    .orElseThrow(() -> new RuntimeException("No request found with id: " + requestId));
+
+    contact.setDone(true);
+    contactRepository.save(contact);
+  }
+
+  public void markContactRequestAsUndone(int requestId) {
+    Contact contact =
+            contactRepository
+                    .findById(requestId)
+                    .orElseThrow(() -> new RuntimeException("No request found with id: " + requestId));
+
+    contact.setDone(false);
+    contactRepository.save(contact);
   }
 }
