@@ -41,91 +41,104 @@
 
     <div class="main-div">
 
-        <div class="section">
-            <div class="left">
-                <div class="image-carousel">
-                    <button type="button" class="carousel-btn prev" onclick="prevImage()">❮</button>
-                    <img id="carouselImage" class="carousel-image"
-                         src="https://mariantoma.sirv.com/Teraon_SUV/black_SUV/1.png" alt="Gallery Image">
-                    <button type="button" class="carousel-btn next" onclick="nextImage()">❯</button>
-                </div>
+        <div class="main-div">
+
+            <div class="text-block">
+                <h1><b>Teraon Configurator</b><br></h1>
+                <p>
+                    Great choice! Now it's time to personalize your vehicle to match your preferences. Select an
+                    exterior color that
+                    reflects your style, choose an interior design that fits your comfort needs, and pick the engine
+                    that delivers
+                    the performance you expect. Each option helps shape the perfect version of your selected model.
+                </p>
             </div>
 
-            <div class="right">
-                <div class="exterior-color-div" th:each="exterior : ${availableExteriorOptions}">
-                    <label class="custom-radio-button">
-                        <input type="radio" class="btn-check" autocomplete="off" checked
-                               th:field="*{exteriorColor}" th:value="${exterior.name()}"
-                               th:attr="data-color=${exterior.name()}"
-                               onclick="changeColorGallery(this.dataset.color); enableSubmit()"
-                               required>
-                        <span class="btn btn-outline-custom" for="btn-check-custom"
-                              th:text="${exterior.description} + ' (' + ${exterior.optionPrice} + ' ' + Euro + ')'"></span>
-                    </label>
+            <div class="section">
+                <div class="left">
+                    <div class="image-carousel">
+                        <button type="button" class="carousel-btn prev" onclick="prevImage()">❮</button>
+                        <img id="carouselImage" class="carousel-image"
+                             src="https://mariantoma.sirv.com/Teraon_SUV/black_SUV/1.png" alt="Gallery Image">
+                        <button type="button" class="carousel-btn next" onclick="nextImage()">❯</button>
+                    </div>
+                </div>
 
-                    <div th:if="${#fields.hasErrors('exteriorColor')}" class="error">
-                        <p th:errors="*{exteriorColor}"></p>
+                <div class="right">
+                    <div class="exterior-color-div" th:each="exterior : ${availableExteriorOptions}">
+                        <label class="custom-radio-button">
+                            <input type="radio" class="btn-check" autocomplete="off" checked
+                                   th:field="*{exteriorColor}" th:value="${exterior.name()}"
+                                   th:attr="data-color=${exterior.name()}"
+                                   onclick="changeColorGallery(this.dataset.color); enableSubmit()"
+                                   required>
+                            <span class="btn btn-outline-custom" for="btn-check-custom"
+                                  th:text="${exterior.description} + ' (' + ${exterior.optionPrice} + ' ' + Euro + ')'"></span>
+                        </label>
+
+                        <div th:if="${#fields.hasErrors('exteriorColor')}" class="error">
+                            <p th:errors="*{exteriorColor}"></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="left">
-                <img id="interiorImage" class="Sirv" data-src="https://mariantoma.sirv.com/interior/black.webp"
-                     alt="Interior View">
-            </div>
+            <div class="section">
+                <div class="left">
+                    <img id="interiorImage" class="Sirv" data-src="https://mariantoma.sirv.com/interior/black.webp"
+                         alt="Interior View">
+                </div>
 
-            <div class="right">
-                <div th:each="interior : ${availableInteriorOptions}">
-                    <label>
-                        <input type="radio" class="btn-check" autocomplete="off" checked
-                               th:field="*{interiorColor}" th:value="${interior.name()}"
-                               th:attr="data-color=${interior.name()}"
-                               onclick="changeInteriorImage(this.dataset.color); enableSubmit()"
-                               required>
-                        <span class="btn btn-outline-custom" for="btn-check-custom"
-                              th:text="${interior.description} + ' (' + ${interior.optionPrice} + ' ' + Euro + ')'"></span>
-                    </label>
+                <div class="right">
+                    <div th:each="interior : ${availableInteriorOptions}">
+                        <label>
+                            <input type="radio" class="btn-check" autocomplete="off" checked
+                                   th:field="*{interiorColor}" th:value="${interior.name()}"
+                                   th:attr="data-color=${interior.name()}"
+                                   onclick="changeInteriorImage(this.dataset.color); enableSubmit()"
+                                   required>
+                            <span class="btn btn-outline-custom" for="btn-check-custom"
+                                  th:text="${interior.description} + ' (' + ${interior.optionPrice} + ' ' + Euro + ')'"></span>
+                        </label>
 
-                    <div th:if="${#fields.hasErrors('interiorColor')}" class="error">
-                        <p th:errors="*{interiorColor}"></p>
+                        <div th:if="${#fields.hasErrors('interiorColor')}" class="error">
+                            <p th:errors="*{interiorColor}"></p>
+                        </div>
+
                     </div>
-
                 </div>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="left">
-                <img id="engineImage" class="Sirv" src="https://mariantoma.sirv.com/Engine_type/2.0%20TSX.png"
-                     alt="Engine View">
-            </div>
+            <div class="section">
+                <div class="left">
+                    <img id="engineImage" class="Sirv" src="https://mariantoma.sirv.com/Engine_type/2.0%20TSX.png"
+                         alt="Engine View">
+                </div>
 
-            <div class="right">
-                <div th:each="engine : ${availableEngineTypes}">
-                    <label>
-                        <input type="radio" class="btn-check" autocomplete="off" checked
-                               th:field="*{engineType}" th:value="${engine.name()}"
-                               th:attr="data-engine=${engine.name()}"
-                               onclick="changeEngineImage(this.dataset.engine); enableSubmit()"
-                               required>
-                        <span class="btn btn-outline-custom" for="btn-check-custom"
-                              th:text="${engine.description} + ' (' + ${engine.optionPrice} + ' ' + Euro + ')'"></span>
-                    </label>
+                <div class="right">
+                    <div th:each="engine : ${availableEngineTypes}">
+                        <label>
+                            <input type="radio" class="btn-check" autocomplete="off" checked
+                                   th:field="*{engineType}" th:value="${engine.name()}"
+                                   th:attr="data-engine=${engine.name()}"
+                                   onclick="changeEngineImage(this.dataset.engine); enableSubmit()"
+                                   required>
+                            <span class="btn btn-outline-custom" for="btn-check-custom"
+                                  th:text="${engine.description} + ' (' + ${engine.optionPrice} + ' ' + Euro + ')'"></span>
+                        </label>
 
-                    <div th:if="${#fields.hasErrors('engineType')}" class="error">
-                        <p th:errors="*{engineType}"></p>
+                        <div th:if="${#fields.hasErrors('engineType')}" class="error">
+                            <p th:errors="*{engineType}"></p>
+                        </div>
+
                     </div>
-
                 </div>
             </div>
+
+            <input type="hidden" th:field="*{finalPrice}" th:value="${calculatedFinalPrice}"/>
+
+            <button id="submitButton" class="submit-button" type="submit">Submit</button>
         </div>
-
-        <input type="hidden" th:field="*{finalPrice}" th:value="${calculatedFinalPrice}"/>
-
-        <button id="submitButton" class="submit-button" type="submit">Submit</button>
-    </div>
 </form>
 
 <script src="/js/suv-configurator.js"></script>

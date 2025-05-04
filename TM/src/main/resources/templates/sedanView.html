@@ -38,45 +38,58 @@
 
 <div class="main-div">
 
-    <div class="spin-view-div">
-        <div class="up">
-            <div th:if="${configuredSedanDto.exteriorColor.name() == 'BLACK'}" class="Sirv"
-                 data-src="https://mariantoma.sirv.com/Elyssion_sedan/black_sedan/black_sedan.spin"></div>
-            <div th:if="${configuredSedanDto.exteriorColor.name() == 'BLUE'}" class="Sirv"
-                 data-src="https://mariantoma.sirv.com/Elyssion_sedan/blue_sedan/blue_sedan.spin"></div>
-            <div th:if="${configuredSedanDto.exteriorColor.name() == 'GREEN'}" class="Sirv"
-                 data-src="https://mariantoma.sirv.com/Elyssion_sedan/green_sedan/green_sedan.spin"></div>
-            <div th:if="${configuredSedanDto.exteriorColor.name() == 'RED'}" class="Sirv"
-                 data-src="https://mariantoma.sirv.com/Elyssion_sedan/red_sedan/red_sedan.spin"></div>
-            <div th:if="${configuredSedanDto.exteriorColor.name() == 'SILVER'}" class="Sirv"
-                 data-src="https://mariantoma.sirv.com/Elyssion_sedan/silver_sedan/silver_sedan.spin"></div>
+    <div class="main-div">
+
+        <div class="text-block">
+            <h1><b>Final Look Before You Go</b><br></h1>
+            <h2>Configured Elyssion</h2>
+            <p>
+                Here's your fully configured vehicle! Take a 360° look at your chosen model and review the details of
+                your selections, including exterior color, interior design, and engine. Everything has been tailored to
+                your preferences. Below, you’ll find the final price based on your configuration. Ready to take the next
+                step? Click the button below to request your personalized offer.
+            </p>
         </div>
 
-        <div class="down">
-            <p>Exterior: <span th:text="${configuredSedanDto.exteriorColor.description}"></span></p>
-            <p>Interior: <span th:text="${configuredSedanDto.interiorColor.description}"></span></p>
-            <p>Engine: <span th:text="${configuredSedanDto.engineType.description}"></span></p>
-            <p>Final price: <span th:text="${configuredSedanDto.finalPrice} + ' ' + Euro"></span></p>
+        <div class="spin-view-div">
+            <div class="up">
+                <div th:if="${configuredSedanDto.exteriorColor.name() == 'BLACK'}" class="Sirv"
+                     data-src="https://mariantoma.sirv.com/Elyssion_sedan/black_sedan/black_sedan.spin"></div>
+                <div th:if="${configuredSedanDto.exteriorColor.name() == 'BLUE'}" class="Sirv"
+                     data-src="https://mariantoma.sirv.com/Elyssion_sedan/blue_sedan/blue_sedan.spin"></div>
+                <div th:if="${configuredSedanDto.exteriorColor.name() == 'GREEN'}" class="Sirv"
+                     data-src="https://mariantoma.sirv.com/Elyssion_sedan/green_sedan/green_sedan.spin"></div>
+                <div th:if="${configuredSedanDto.exteriorColor.name() == 'RED'}" class="Sirv"
+                     data-src="https://mariantoma.sirv.com/Elyssion_sedan/red_sedan/red_sedan.spin"></div>
+                <div th:if="${configuredSedanDto.exteriorColor.name() == 'SILVER'}" class="Sirv"
+                     data-src="https://mariantoma.sirv.com/Elyssion_sedan/silver_sedan/silver_sedan.spin"></div>
+            </div>
 
+            <div class="down">
+                <p>Exterior: <span th:text="${configuredSedanDto.exteriorColor.description}"></span></p>
+                <p>Interior: <span th:text="${configuredSedanDto.interiorColor.description}"></span></p>
+                <p>Engine: <span th:text="${configuredSedanDto.engineType.description}"></span></p>
+                <p>Final price: <span th:text="${configuredSedanDto.finalPrice} + ' ' + Euro"></span></p>
+
+            </div>
         </div>
+
+        <form th:action="@{/configurator/sedanOfferRequest}" method="get">
+            <input type="hidden" name="id" th:value="${configuredSedanDto.id}"/>
+            <button type="submit" class="submit-button">Request Offer</button>
+        </form>
+
     </div>
 
-    <form th:action="@{/configurator/sedanOfferRequest}" method="get">
-        <input type="hidden" name="id" th:value="${configuredSedanDto.id}"/>
-        <button type="submit" class="submit-button">Request Offer</button>
-    </form>
+    <script>
+        function w3_open() {
+          document.getElementById("mySidebar").style.display = "block";
+        }
 
-</div>
-
-<script>
-    function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-    }
-
-    function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-    }
-</script>
+        function w3_close() {
+          document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
 
 </body>
 </html>
