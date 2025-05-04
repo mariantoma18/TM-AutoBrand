@@ -226,10 +226,25 @@
   box-sizing: border-box;
 }
 
+.dashboard-page-section {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid 2px #BFA181;
+    border-radius: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
 .home-page-text-section:hover,
 .contact-page-text-section:hover,
 .consumption-page-text-section:hover {
-    scale: 1.05;
+    scale: 1.01;
     background-color: #F1EFEC;
 }
 
@@ -309,4 +324,25 @@
   max-width: 400px;
   height: 400px;
   object-fit: contain;
+}
+
+.stat-box {
+    flex: 0 0 300px;
+    box-sizing: border-box;
+    background-color: #000000;
+    color: #BFA181;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 50px;
+    text-align: center;
+    height: 180px;
+    word-wrap: break-word;
+}
+
+.stat-box:hover {
+    scale: 1.01;
+}
+
+.stat-box p {
+    font-size: 80px;
 }

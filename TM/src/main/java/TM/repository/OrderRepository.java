@@ -10,4 +10,6 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<Order, Integer> {
     List<Order> findByIsDoneFalse();
     List<Order> findByIsDoneTrue();
+    long countByIsDoneFalse();
+    long countByIsDoneTrue();
 }

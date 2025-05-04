@@ -1,6 +1,7 @@
 package TM.controller;
 
 import TM.service.AdminService;
+import TM.service.DashboardStatsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
 
   private final AdminService adminService;
+  private final DashboardStatsService dashboardStatsService;
 
   @GetMapping("/homePage")
   public String getAdminHomePage() {
@@ -131,7 +133,8 @@ public class AdminController {
   }
 
   @GetMapping("/dashboard")
-  public String getDashboardPage() {
+  public String getDashboardPage(Model model) {
+    model.addAttribute("dashboardStats", dashboardStatsService.mapStatsToDashboardStats());
     return "adminDashboard";
   }
 }
