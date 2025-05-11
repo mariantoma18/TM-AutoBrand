@@ -20,8 +20,16 @@ public class ConsumptionCalculatorService {
       EngineType engineType,
       ConsumptionType consumptionType) {
 
+    if (monthlyKms == null || monthlyKms <= 0) {
+      throw new RuntimeException("Monthly kilometers must be greater than zero.");
+    }
+
     Double consumption =
         consumptionService.getConsumptionForModelAndEngine(modelType, engineType, consumptionType);
+
+    if (consumption == null || consumption <= 0) {
+      throw new RuntimeException("Consumption data is invalid.");
+    }
 
     return Math.round(((monthlyKms * consumption) / 100) * 100) / 100.0;
   }
@@ -37,6 +45,10 @@ public class ConsumptionCalculatorService {
         calculateFuelConsumptionInLiters(monthlyKms, modelType, engineType, consumptionType);
 
     FuelPrice fuelPrice = fuelPriceService.getFuelPrice();
+
+    if (fuelPrice == null) {
+      throw new RuntimeException("Fuel price information is not available.");
+    }
 
     if (engineType.name().contains("PETROL")) {
       price = Double.parseDouble(fuelPrice.getPetrolPrice());

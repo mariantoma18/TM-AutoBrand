@@ -88,6 +88,6 @@ public class AccessoriesService {
   public Accessory getAccessoryById(int id) {
     return accessoriesRepository
         .findById(id)
-        .orElseThrow(() -> new RuntimeException("No accessory find with id: " + id));
+        .orElseThrow(() -> new RuntimeException("No accessory found with ID: " + id));
   }
 }

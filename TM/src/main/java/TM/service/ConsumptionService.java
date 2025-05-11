@@ -15,7 +15,6 @@ import java.util.List;
 public class ConsumptionService {
 
   private final ConsumptionRepository consumptionRepository;
-  private FuelPriceService fuelPriceService;
 
   public Double getConsumptionForModelAndEngine(
       ModelType modelType, EngineType engineType, ConsumptionType consumptionType) {
