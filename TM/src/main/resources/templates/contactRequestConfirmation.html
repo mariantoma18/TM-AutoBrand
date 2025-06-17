@@ -58,23 +58,23 @@
     </div>
 
     <div class="down">
-      <p><b>Name:</b>
+      <p><b><i class="bi bi-person-vcard-fill"></i> Name:</b>
         <span th:text="${contact.firstName} + ' ' + ${contact.lastName}"></span>
       </p>
 
-      <p><b>Email:</b>
+      <p><b><i class="bi bi-envelope-at-fill"></i> Email:</b>
         <span th:text="${contact.email}"></span>
       </p>
 
-      <p><b>Phone Number:</b>
+      <p><b><i class="bi bi-telephone-fill"></i> Phone Number:</b>
         <span th:text="${contact.phoneNumber}"></span>
       </p>
 
-      <p><b>Subject:</b>
+      <p><b><i class="bi bi-fonts"></i> Subject:</b>
         <span th:text="${contact.emailSubject}"></span>
       </p>
 
-      <p><b>Message:</b></p>
+      <p><b><i class="bi bi-chat-text-fill"></i> Message:</b></p>
       <p th:text="${contact.emailContent}"></p>
 
       <br>
@@ -83,7 +83,7 @@
   </div>
 
   <a href="/">
-    <button class="submit-button">Home</button>
+    <button class="submit-button"><i class="bi bi-house-fill"></i> Home</button>
   </a>
 </div>
 

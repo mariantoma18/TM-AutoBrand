@@ -66,7 +66,7 @@
         </div>
 
         <div class="form-div">
-            <label class="form-label">First Name:</label>
+            <label class="form-label"><i class="bi bi-person-vcard-fill"></i> First Name:</label>
             <label>
                 <input type="text" th:field="*{firstName}" required/>
             </label>
@@ -75,7 +75,7 @@
                 <p th:errors="*{firstName}"></p>
             </div>
 
-            <label class="form-label">Last Name:</label>
+            <label class="form-label"><i class="bi bi-person-vcard-fill"></i> Last Name:</label>
             <label>
                 <input type="text" th:field="*{lastName}" required/>
             </label>
@@ -84,7 +84,7 @@
                 <p th:errors="*{lastName}"></p>
             </div>
 
-            <label class="form-label">Email:</label>
+            <label class="form-label"><i class="bi bi-envelope-at-fill"></i> Email:</label>
             <label>
                 <input type="text" th:field="*{email}" required/>
             </label>
@@ -93,7 +93,7 @@
                 <p th:errors="*{email}"></p>
             </div>
 
-            <label class="form-label">Phone number:</label>
+            <label class="form-label"><i class="bi bi-telephone-fill"></i> Phone number:</label>
             <label>
                 <input type="text" th:field="*{phoneNumber}" required/>
             </label>
@@ -102,7 +102,7 @@
                 <p th:errors="*{phoneNumber}"></p>
             </div>
 
-            <label class="form-label">Model type:</label>
+            <label class="form-label"><i class="bi bi-car-front-fill"></i> Model type:</label>
             <label>
                 <select class="model-type-selector" th:field="*{modelType}" required>
                     <option th:each="type : ${modelTypes}"
@@ -113,7 +113,7 @@
             </label>
             <br/>
 
-            <label class="form-label">Date:<br><span>(select an hour between 09:00 and 17:00)</span></label>
+            <label class="form-label"><i class="bi bi-calendar2-week-fill"></i> Date:<br><span>(select an hour between 09:00 and 17:00)</span></label>
             <label>
                 <input class="date-time-selector"
                        type="datetime-local"
@@ -124,7 +124,7 @@
             </label>
             <br>
 
-            <label class="form-label">Choose a location:<br><span></span></label>
+            <label class="form-label"><i class="bi bi-pin-map-fill"></i> Choose a location:<br><span></span></label>
             <label>
                 <select class="dealership-location-selector" th:field="*{dealershipLocation}" required>
                     <option th:each="location : ${dealershipLocations}"
@@ -135,7 +135,7 @@
             </label>
             <br>
 
-            <button type="submit" class="submit-button">Submit Service Request</button>
+            <button type="submit" class="submit-button"><i class="bi bi-send-fill"></i> Submit Service Request</button>
         </div>
     </div>
 </form>

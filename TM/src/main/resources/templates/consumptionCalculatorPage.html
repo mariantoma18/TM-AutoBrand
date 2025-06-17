@@ -101,7 +101,7 @@
     <div class="main-div">
         <div class="form-div">
 
-            <label class="form-label">Model Type:</label>
+            <label class="form-label"><i class="bi bi-car-front-fill"></i> Model Type:</label>
             <label>
                 <select th:field="*{modelType}" required>
                     <option th:each="type : ${modelTypes}"
@@ -111,7 +111,7 @@
             </label>
             <br/>
 
-            <label class="form-label">Engine Type:</label>
+            <label class="form-label"><i class="bi bi-tools"></i> Engine Type:</label>
             <label>
                 <select th:field="*{engineType}" required>
                     <option th:each="type : ${engineTypes}"
@@ -121,7 +121,7 @@
             </label>
             <br/>
 
-            <label class="form-label">Consumption Type:</label>
+            <label class="form-label"><i class="bi bi-fuel-pump-fill"></i> Consumption Type:</label>
             <label>
                 <select th:field="*{consumptionType}" required>
                     <option th:each="type : ${consumptionTypes}"
@@ -131,7 +131,7 @@
             </label>
             <br/>
 
-            <label class="form-label">Monthly Kilometers:</label>
+            <label class="form-label"><i class="bi bi-speedometer2"></i> Monthly Kilometers:</label>
             <label>
                 <input type="number" th:field="*{monthlyKms}" min="1" required/>
             </label>
@@ -140,7 +140,7 @@
                 <p th:errors="*{monthlyKms}"></p>
             </div>
 
-            <button type="submit" class="submit-button">Calculate Consumption</button>
+            <button type="submit" class="submit-button"><i class="bi bi-calculator-fill"></i> Calculate Consumption</button>
         </div>
     </div>
 </form>

@@ -50,21 +50,21 @@
         <div class="text-block">
             <h2>Fuel Consumption Estimation</h2>
 
-            <p><b>Estimated Monthly Fuel Usage:</b></p>
+            <p><b><i class="bi bi-fuel-pump-fill"></i> Estimated Monthly Fuel Usage:</b></p>
             <p th:text="${fuelConsumption} + ' liters'"></p>
 
-            <p><b>Estimated Monthly Fuel Cost in RON:</b></p>
+            <p><b><i class="bi bi-cash-coin"></i> Estimated Monthly Fuel Cost in RON:</b></p>
             <p th:text="${fuelPrice} + ' RON'"></p>
 
             <div th:if="${engineType.name() == 'PETROL_2_0_TSX'}">
-                <p><strong>Petrol price:</strong> <span th:text="${fuelPrices.petrolPrice} + ' RON/l'"></span></p>
+                <p><strong><i class="bi bi-tags-fill"></i> Petrol price:</strong> <span th:text="${fuelPrices.petrolPrice} + ' RON/l'"></span></p>
             </div>
 
             <div th:if="${engineType.name() == 'DIESEL_2_0_TDX'}">
-                <p><strong>Diesel price:</strong> <span th:text="${fuelPrices.dieselPrice} + ' RON/l'"></span></p>
+                <p><strong><i class="bi bi-tags-fill"></i> Diesel price:</strong> <span th:text="${fuelPrices.dieselPrice} + ' RON/l'"></span></p>
             </div>
 
-            <p>*Fuel prices sourced from
+            <p><i class="bi bi-browser-chrome"></i> *Fuel prices sourced from
                 <a href="https://www.cargopedia.ro/preturi-carburanti-europa" target="_blank" style="color: #BFA181;">
                     Cargopedia.ro
                 </a>
@@ -72,11 +72,11 @@
 
                 <br>
                 <a href="/consumption">
-                    <button class="submit-button">Back to Calculator</button>
+                    <button class="submit-button"><i class="bi bi-calculator-fill"></i> Back to Calculator</button>
                 </a>
                 <br>
                 <a href="/">
-                    <button class="submit-button">Home</button>
+                    <button class="submit-button"><i class="bi bi-house-fill"></i> Home</button>
                 </a>
         </div>
     </div>
